@@ -68,17 +68,17 @@ export default function GameSection() {
     <section className="game-section" id="game">
       <div className="section-heading-v5">
         <div>
-          <p className="section-kicker">05 / Secret level</p>
+          <p className="section-kicker">05 / Bonus round</p>
           <h2>Catch the <em>packets.</em></h2>
         </div>
-        <p>A 20-second reflex test. Start the stream, hit every packet, and unlock the meeting ticket.</p>
+        <p>A small playable detour. Start the stream, catch 12 packets, and unlock the contact ticket.</p>
       </div>
 
       <div className="game-panel">
         <div className="game-topbar">
           <div><span>TIME</span><strong>{time}s</strong></div>
           <div><span>SCORE</span><strong>{String(score).padStart(2, "0")} / {HITS_TO_WIN}</strong></div>
-          <button onClick={start}>{running ? "RESTART" : "START GAME"}</button>
+          <button onClick={start}>{running ? "RESTART" : "START"}</button>
         </div>
 
         <div className="game-arena">
@@ -98,8 +98,8 @@ export default function GameSection() {
           {!running && !won && !lost && (
             <div className="game-state">
               <strong>READY?</strong>
-              <span>Start the stream to begin.</span>
-              <button onClick={start}>RUN SYSTEM</button>
+              <span>Catch every packet before the clock hits zero.</span>
+              <button onClick={start}>START RUN</button>
             </div>
           )}
 
@@ -107,14 +107,14 @@ export default function GameSection() {
             <div className="game-state">
               <strong>TIMEOUT</strong>
               <span>{score} packets secured.</span>
-              <button onClick={start}>TRY AGAIN</button>
+              <button onClick={start}>RUN AGAIN</button>
             </div>
           )}
 
           {won && (
             <div className="game-state is-success">
               <strong>ACCESS GRANTED</strong>
-              <span>Packet stream secured.</span>
+              <span>Packet stream secured. Ticket unlocked.</span>
             </div>
           )}
         </div>
