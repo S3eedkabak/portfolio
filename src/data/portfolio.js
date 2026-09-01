@@ -18,7 +18,7 @@ export const portfolio = {
     {
       number: "01",
       title: "GreenPoint",
-      category: "FIELD SYSTEMS",
+      category: "PRODUCTION MOBILE",
       description: "A production mobile application for forest scientists to gather forestry data in remote environments without cellular or Wi-Fi connectivity.",
       stack: ["JavaScript", "Node.js", "Express", "Docker", "Jenkins"],
       url: "https://github.com/S3eedkabak/GreenPoint-TreeD",
@@ -39,3 +39,9 @@ export const portfolio = {
     description: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field-research application.",
   },
 };
+
+export const themes = [
+  { id: "sky", label: "Sky" },
+  { id: "paper", label: "Paper" },
+  { id: "ink", label: "Ink" },
+];
