@@ -1,29 +1,25 @@
 import { useState } from "react";
-
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import SystemSection from "./components/SystemSection";
+import ProjectsSection from "./components/ProjectsSection";
 import AboutSection from "./components/AboutSection";
-import ContactSection from "./components/ContactSection";
 import ExperienceSection from "./components/ExperienceSection";
 import GameSection from "./components/GameSection";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import ProjectsSection from "./components/ProjectsSection";
-import SystemSection from "./components/SystemSection";
-import { portfolio } from "./data/portfolio";
-
-const THEMES = ["lime", "blue", "orange"];
+import ContactSection from "./components/ContactSection";
+import { themes } from "./data/portfolio";
 
 export default function App() {
   const [themeIndex, setThemeIndex] = useState(0);
-  const theme = THEMES[themeIndex];
+  const theme = themes[themeIndex];
 
-  const changeTheme = () => {
-    setThemeIndex((current) => (current + 1) % THEMES.length);
+  const cycleTheme = () => {
+    setThemeIndex((current) => (current + 1) % themes.length);
   };
 
   return (
-    <div className="site" data-theme={theme}>
-      <Navbar theme={theme} onThemeChange={changeTheme} />
-
+    <div className={`site theme-${theme.id}`}>
+      <Navbar theme={theme.label} onThemeChange={cycleTheme} />
       <main>
         <Hero />
         <SystemSection />
@@ -33,10 +29,9 @@ export default function App() {
         <GameSection />
         <ContactSection />
       </main>
-
       <footer className="site-footer">
-        <span>{portfolio.name.toUpperCase()} / 2026</span>
-        <span>BUILT WITH INTENT.</span>
+        <span>SAEID KABAK © 2026</span>
+        <span>BUILT WITH CARE.</span>
       </footer>
     </div>
   );
