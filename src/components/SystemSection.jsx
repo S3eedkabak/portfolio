@@ -56,6 +56,7 @@ export default function SystemSection() {
               max="1"
               step="0.001"
               value={progress}
+              style={{ "--value": progress }}
               onChange={(event) => setProgress(Number(event.target.value))}
             />
             <div className="assembly-labels">
