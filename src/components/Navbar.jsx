@@ -1,4 +1,4 @@
-import { ArrowDownRight, Github, Linkedin, Mail, Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Palette, X } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
@@ -26,10 +26,12 @@ export default function Navbar({ theme, onThemeChange }) {
         {navItems.map(([label, id]) => (
           <button key={id} onClick={() => scrollTo(id)}>{label}</button>
         ))}
+
         <a href="https://www.linkedin.com/in/saeed-saeed-5311a3309" target="_blank" rel="noreferrer">LinkedIn</a>
+
         <button className="theme-switch" onClick={onThemeChange} aria-label="Change color theme">
-          {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
-          <span>Theme</span>
+          <Palette size={14} />
+          <span>{theme}</span>
         </button>
       </nav>
 
