@@ -18,6 +18,21 @@ export default function App() {
     ? getSyrianArabic(baseTranslation, baseContent)
     : { translation: baseTranslation, content: baseContent };
 
+  const systemTranslation = language === "AR"
+    ? {
+        ...localized.translation.system,
+        titleA: "الأدوات",
+        titleB: ".",
+      }
+    : localized.translation.system;
+
+  const pageTranslation = language === "AR"
+    ? {
+        ...localized.translation,
+        system: systemTranslation,
+      }
+    : localized.translation;
+
   return (
     <div
       className="site theme-paper"
@@ -27,19 +42,19 @@ export default function App() {
       <Navbar
         language={language}
         onLanguageChange={setLanguage}
-        t={localized.translation}
+        t={pageTranslation}
       />
       <main>
-        <Hero t={localized.translation} content={localized.content} />
-        <SystemSection t={localized.translation} content={localized.content} />
-        <ProjectsSection t={localized.translation} content={localized.content} />
-        <AboutSection t={localized.translation} content={localized.content} />
-        <ExperienceSection t={localized.translation} content={localized.content} />
-        <GameSection t={localized.translation} />
-        <ContactSection t={localized.translation} />
+        <Hero t={pageTranslation} content={localized.content} />
+        <SystemSection t={pageTranslation} content={localized.content} />
+        <ProjectsSection t={pageTranslation} content={localized.content} />
+        <AboutSection t={pageTranslation} content={localized.content} />
+        <ExperienceSection t={pageTranslation} content={localized.content} />
+        <GameSection t={pageTranslation} />
+        <ContactSection t={pageTranslation} />
       </main>
       <footer className="site-footer">
-        <span>{localized.translation.footer}</span>
+        <span>{pageTranslation.footer}</span>
         <span />
       </footer>
     </div>
