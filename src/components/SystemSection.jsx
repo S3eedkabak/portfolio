@@ -9,8 +9,15 @@ export default function SystemSection({ t, content }) {
       <div className="system-layout">
         <div className="system-copy">
           <h2>
-            {t.system.titleA} <em>{t.system.titleB}</em>
+            {t.system.titleA}
+            {t.system.titleB && (
+              <>
+                <br />
+                <em>{t.system.titleB}</em>
+              </>
+            )}
           </h2>
+          <p>{t.system.description}</p>
         </div>
 
         <div className="system-workbench">
