@@ -71,7 +71,7 @@ export default function GameSection({ t }) {
     <section className="game-section" id="game">
       <div className="section-heading-v5">
         <h2>
-          Catch the <em>packets.</em>
+          {t.game.titleA} <em>{t.game.titleB}</em>
         </h2>
       </div>
 
