@@ -5,12 +5,9 @@ export default function AboutSection({ t, content }) {
   return (
     <section className="about-section" id="about">
       <div className="about-intro">
-        <div>
-          <p className="section-kicker">{t.about.kicker}</p>
-          <h2>
-            {t.about.titleA} <em>{t.about.titleB}</em>
-          </h2>
-        </div>
+        <h2>
+          {t.about.titleA} <em>{t.about.titleB}</em>
+        </h2>
         <p className="about-lead">{t.about.lead}</p>
       </div>
 
