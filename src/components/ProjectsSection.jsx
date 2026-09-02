@@ -1,12 +1,12 @@
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
-export default function ProjectsSection({ content }) {
+export default function ProjectsSection({ t, content }) {
   return (
     <section className="projects-section" id="work">
       <div className="section-heading-v5">
         <h2>
-          Things I've <em>built.</em>
+          {t.work.titleA} <em>{t.work.titleB}</em>
         </h2>
       </div>
 
