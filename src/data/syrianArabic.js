@@ -89,3 +89,23 @@ export const syrianArabicContent = {
   ],
   experience: "قدت تسليم GreenPoint للإنتاج وشاركت بتوجيه القرارات التقنية من الجاهزية للإطلاق لحد تسليم تطبيق أبحاث ميدانية على الموبايل.",
 };
+
+function merge(base, override) {
+  if (!override) return base;
+
+  return Object.fromEntries(
+    Object.entries(base).map(([key, value]) => [
+      key,
+      value && typeof value === "object" && !Array.isArray(value)
+        ? merge(value, override[key])
+        : override[key] ?? value,
+    ]),
+  );
+}
+
+export function getSyrianArabic(baseTranslation, baseContent) {
+  return {
+    translation: merge(baseTranslation, syrianArabic),
+    content: { ...baseContent, ...syrianArabicContent },
+  };
+}
