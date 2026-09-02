@@ -39,9 +39,3 @@ export const portfolio = {
     description: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field-research application.",
   },
 };
-
-export const themes = [
-  { id: "sky", label: "Sky" },
-  { id: "paper", label: "Paper" },
-  { id: "ink", label: "Ink" },
-];
