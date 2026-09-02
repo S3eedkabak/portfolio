@@ -9,17 +9,17 @@ export default function SystemSection() {
     <section className="system-section" id="system">
       <div className="system-layout">
         <div className="system-copy">
-          <p className="section-kicker">01 / Under the hood</p>
+          <p className="section-kicker"></p>
           <h2>Take it <em>apart.</em></h2>
           <p>
-            A visual inventory of the tools I use to turn messy requirements into software that can survive real constraints.
+            My box of tools I use to turn messy requirements into software
           </p>
         </div>
 
         <div className="system-workbench">
           <div className="system-model-card">
             <MacBookScene progress={progress} />
-            <span className="model-caption">03D / LIVE ASSET</span>
+            <span className="model-caption">My Macbook, that helps me do what i do. </span>
           </div>
 
           <aside className="skill-panel" aria-label="Technical skills">
@@ -60,9 +60,9 @@ export default function SystemSection() {
               onChange={(event) => setProgress(Number(event.target.value))}
             />
             <div className="assembly-labels">
-              <span>CLOSED</span>
-              <span>OPEN</span>
-              <span>APART</span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
         </div>

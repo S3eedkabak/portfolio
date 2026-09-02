@@ -68,7 +68,7 @@ export default function GameSection() {
     <section className="game-section" id="game">
       <div className="section-heading-v5">
         <div>
-          <p className="section-kicker">05 / Bonus round</p>
+          <p className="section-kicker"></p>
           <h2>Catch the <em>packets.</em></h2>
         </div>
         <p>A small playable detour. Start the stream, catch 12 packets, and unlock the contact ticket.</p>

@@ -4,7 +4,7 @@ import { portfolio } from "../data/portfolio";
 export default function ContactSection() {
   return (
     <section className="contact-section" id="contact">
-      <p className="section-kicker">06 / Get in touch</p>
+      <p className="section-kicker"></p>
       <h2>Have a hard <em>problem?</em></h2>
       <a className="contact-mail" href={`mailto:${portfolio.email}`}>
         <Mail size={18} />

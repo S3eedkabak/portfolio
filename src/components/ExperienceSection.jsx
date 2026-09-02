@@ -7,7 +7,7 @@ export default function ExperienceSection() {
     <section className="experience-section">
       <div className="section-heading-v5">
         <div>
-          <p className="section-kicker">04 / Experience</p>
+          <p className="section-kicker"></p>
           <h2>Production, <em>not theory.</em></h2>
         </div>
       </div>

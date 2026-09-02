@@ -6,7 +6,7 @@ export default function AboutSection() {
     <section className="about-section" id="about">
       <div className="about-intro">
         <div>
-          <p className="section-kicker">03 / The engineer</p>
+          <p className="section-kicker"></p>
           <h2>More than <em>the stack.</em></h2>
         </div>
         <p className="about-lead">
@@ -18,7 +18,7 @@ export default function AboutSection() {
         <div className="about-copy">
           <p>{portfolio.education}</p>
           <p>
-            My work sits at the intersection of software engineering, distributed systems, and practical AI. I care about the boring details that make the flashy demo survive Monday morning.
+            My work sits at the intersection of software engineering, AI, and the consumer. I care about the boring details that make the flashy demo survive Monday morning.
           </p>
 
           <div className="social-links">

@@ -6,7 +6,7 @@ export default function ProjectsSection() {
     <section className="projects-section" id="work">
       <div className="section-heading-v5">
         <div>
-          <p className="section-kicker">02 / Selected work</p>
+          <p className="section-kicker"></p>
           <h2>Things I've <em>built.</em></h2>
         </div>
         <p>
