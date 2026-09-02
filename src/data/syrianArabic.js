@@ -1,0 +1,111 @@
+export const syrianArabic = {
+  nav: {
+    system: "النظام",
+    work: "شغلي",
+    about: "عني",
+    game: "اللعبة",
+    linkedin: "لينكدإن",
+    language: "اللغة",
+  },
+  hero: {
+    eyebrow: "مهندس برمجيات / باني / بحلّ المشاكل",
+    explore: "شوف شغلي",
+    role: "مهندس برمجيات",
+  },
+  system: {
+    kicker: "",
+    titleA: "فكّها",
+    titleB: "قطعة قطعة.",
+    description: "هاي مجموعة الأدوات اللي بستخدمها لأحوّل المتطلبات المعقّدة لبرمجيات بتتحمّل الشغل الحقيقي.",
+    caption: "الـ MacBook اللي بشتغل عليه كل يوم.",
+    profile: "المهارات التقنية",
+    assembly: "التفكيك",
+    closed: "مسكّر",
+    open: "مفتوح",
+    apart: "مفكّك",
+  },
+  work: {
+    kicker: "",
+    titleA: "الشغلات اللي",
+    titleB: "بنيتها.",
+    intro: "مشاريع حقيقية، مو مجرد تصاميم شكلها حلو. فيك تفتح المستودعات وتشوف الشغل بنفسك.",
+  },
+  about: {
+    kicker: "",
+    titleA: "أكتر من",
+    titleB: "مجرد ستاك.",
+    lead: "بحب المشاكل الصعبة لما يكون إلها سبب. النظام لازم يكون مفهوم، متين، ومبني للناس اللي رح تستخدمه.",
+    body: "شغلي بيجمع بين هندسة البرمجيات والـ AI وتجربة المستخدم. بهتم بالتفاصيل الصغيرة اللي بتخلّي الشغل يضل واقف لما يخلص العرض ويبلّش الاستخدام الحقيقي.",
+  },
+  experience: {
+    kicker: "",
+    titleA: "شغل حقيقي،",
+    titleB: "مو تنظير.",
+  },
+  game: {
+    kicker: "",
+    titleA: "لقّط",
+    titleB: "الباكِتات.",
+    intro: "لعبة صغيرة للتغيير. بلّش الجولة، لقّط 12 باكِت وافتح بطاقة التواصل.",
+    time: "الوقت",
+    score: "النقاط",
+    start: "بلّش",
+    restart: "عيد",
+    ready: "جاهز؟",
+    readyText: "لقّط كل باكِت قبل ما يخلص الوقت.",
+    startRun: "بلّش اللعبة",
+    timeout: "خلص الوقت",
+    secured: "باكِت تم لقطها.",
+    runAgain: "جرّب كمان مرة",
+    granted: "تم فتح الوصول",
+    ticketUnlocked: "خلصت الجولة. بطاقة التواصل انفتحت.",
+    ticket: "بطاقة / 001",
+    congratulations: "مبروك.",
+    ticketText: "صار معك بطاقة لتلتقي بسعيد قبّاق.",
+  },
+  contact: {
+    kicker: "",
+    titleA: "عندك مشكلة",
+    titleB: "صعبة؟",
+    email: "إيميل",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+  },
+};
+
+export const syrianArabicContent = {
+  bio: "ببني برمجيات مفيدة ضمن ظروف حقيقية: تطبيقات متينة، أنظمة غير متزامنة، وعمليات AI لازم تشتغل منيح خارج الديمو.",
+  education: "BSc (Hons) Software Engineering · Lancaster University Leipzig · متوقع التخرج بأكتوبر 2026",
+  skills: [
+    ["اللغات", "Java · Python · JavaScript · HTML/CSS · SQL"],
+    ["Backend", "Node.js · Express · REST APIs · RabbitMQ"],
+    ["الهندسة", "Layered systems · Event-driven architecture · Sync/async workflows"],
+    ["AI والبيانات", "RAG pipelines · Vector search · Embeddings · Algorithms"],
+    ["DevOps", "Docker · Docker Compose · Jenkins · Git · Linux/Unix"],
+  ],
+  projects: [
+    ["تطبيق موبايل للإنتاج", "تطبيق موبايل حقيقي لعلماء الغابات لجمع بيانات من مناطق بعيدة حتى بدون شبكة موبايل أو Wi-Fi."],
+    ["بنية AI", "شات بوت تعاوني مبني على RAG ومعالجة غير متزامنة واسترجاع معلومات ومحادثة بالـ AI."],
+  ],
+  experience: "قدت تسليم GreenPoint للإنتاج وشاركت بتوجيه القرارات التقنية من الجاهزية للإطلاق لحد تسليم تطبيق أبحاث ميدانية على الموبايل.",
+};
+
+function merge(base, override) {
+  if (!override) return base;
+
+  return Object.fromEntries(
+    Object.entries(base).map(([key, value]) => [
+      key,
+      value && typeof value === "object" && !Array.isArray(value)
+        ? merge(value, override[key])
+        : override[key] ?? value,
+    ]),
+  );
+}
+
+export function getSyrianArabic(baseTranslation, baseContent) {
+  return {
+    translation: merge(baseTranslation, syrianArabic),
+    content: { ...baseContent, ...syrianArabicContent },
+  };
+}
