@@ -35,7 +35,7 @@ export default function Navbar({ language, onLanguageChange, t }) {
         {navItems.map(([key, id]) => (
           <button key={id} onClick={() => scrollTo(id)}>{labels[key]}</button>
         ))}
-        <a href="www.linkedin.com/in/saeid-kabak-5311a3309" target="_blank" rel="noreferrer">{t.nav.linkedin}</a>
+        <a href="https://www.linkedin.com/in/saeid-kabak-5311a3309" target="_blank" rel="noreferrer">{t.nav.linkedin}</a>
 
         <div className="language-picker" aria-label={t.nav.language}>
           {languages.map((code) => (
