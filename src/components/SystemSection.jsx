@@ -11,18 +11,16 @@ export default function SystemSection({ t, content }) {
           <h2>
             {t.system.titleA} <em>{t.system.titleB}</em>
           </h2>
-          <p>{t.system.description}</p>
         </div>
 
         <div className="system-workbench">
           <div className="system-model-card">
             <MacBookScene progress={progress} />
-            <span className="model-caption">{t.system.caption}</span>
           </div>
 
-          <aside className="skill-panel" aria-label={t.system.profile}>
+          <aside className="skill-panel" aria-label="Skills">
             <div className="skill-panel-head">
-              <span>{t.system.profile}</span>
+              <span>Skills</span>
               <strong>{String(Math.round(progress * 100)).padStart(3, "0")}%</strong>
             </div>
 
