@@ -1,18 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,ital,wght@6..96,0,500;6..96,1,500&family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;1,500&family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #f4f1eb;
   --surface: #fffdf8;
-  --surface-soft: #eaf5ff;
-  --ink: #11161d;
-  --muted: #67717b;
-  --line: #d9d5cc;
+  --surface-soft: #ece8df;
+  --ink: #151515;
+  --muted: #68645c;
+  --line: #d7d2c7;
   --accent: #b8dcff;
-  --accent-strong: #5b97c9;
+  --accent-strong: #5c95c8;
   --serif: "Bodoni Moda", serif;
   --sans: "DM Sans", sans-serif;
   --label: "Manrope", sans-serif;
-  --shadow: 0 24px 70px rgba(37, 55, 70, 0.08);
+  --shadow: 0 20px 60px rgba(40, 50, 55, 0.08);
 }
 
 * {
@@ -56,18 +56,18 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 78px;
+  height: 76px;
   padding: 0 5.5vw;
-  background: rgba(244, 241, 235, 0.86);
+  background: rgba(244, 241, 235, 0.9);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(217, 213, 204, 0.85);
+  border-bottom: 1px solid rgba(215, 210, 199, 0.85);
 }
 
 .nav-logo {
   border: 0;
   background: none;
   color: var(--ink);
-  font: 700 15px var(--sans);
+  font: 700 15px var(--label);
   letter-spacing: -0.08em;
 }
 
@@ -78,7 +78,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.45rem;
+  gap: 1.4rem;
 }
 
 .nav-links > button,
@@ -87,7 +87,7 @@ a {
   background: none;
   color: var(--muted);
   font: 600 10px var(--label);
-  letter-spacing: 0.11em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -115,13 +115,13 @@ a {
 
 .language-option {
   min-width: 2rem;
-  padding: 0.35rem 0.48rem;
+  padding: 0.35rem 0.5rem;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
   font: 600 9px var(--label);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
 .language-option:hover {
@@ -139,7 +139,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(135deg, #fffdf8 0%, #f5f2ec 58%, #eef7ff 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 60%, #f0ede6 100%);
 }
 
 .hero-rail,
@@ -160,17 +160,8 @@ a {
   max-width: 1150px;
 }
 
-.eyebrow,
-.section-kicker {
-  margin: 0;
-  color: var(--muted);
-  font: 600 10px var(--label);
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
-  margin: 0.75rem 0 1.6rem;
+  margin: 0.7rem 0 1.6rem;
   font-size: clamp(5.5rem, 14vw, 12rem);
   line-height: 0.76;
   letter-spacing: -0.095em;
@@ -213,7 +204,7 @@ h2 em {
   gap: 0.5rem;
   color: var(--muted);
   font: 600 10px var(--label);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -237,19 +228,27 @@ h2 em {
 }
 
 .text-button:hover {
-  background: var(--accent-strong);
   border-color: var(--accent-strong);
+  background: var(--accent-strong);
   color: #fff;
 }
 
+.system-section,
+.projects-section,
+.experience-section,
+.game-section,
+.about-section,
+.contact-section {
+  padding: 8rem 5.5vw;
+}
+
 .system-section {
-  padding: 8rem 5.5vw 7rem;
   background: var(--bg);
 }
 
 .system-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 2.22fr);
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 2.28fr);
   gap: 4vw;
   align-items: start;
 }
@@ -260,33 +259,27 @@ h2 em {
 }
 
 .system-copy h2 {
-  margin: 0.9rem 0 1.5rem;
+  margin: 0;
   font-size: clamp(4rem, 8vw, 7rem);
-  line-height: 0.82;
+  line-height: 0.84;
   letter-spacing: -0.075em;
   font-weight: 500;
-}
-
-.system-copy > p:last-child {
-  max-width: 25rem;
-  color: var(--muted);
-  line-height: 1.7;
 }
 
 .system-workbench {
   min-width: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 20rem;
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) 19rem;
+  gap: 1rem;
 }
 
 .system-model-card {
-  min-height: 590px;
+  min-height: 560px;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 24px;
-  background: radial-gradient(circle at 50% 45%, #edf7ff 0, #fffdf8 43%, #f3efe8 100%);
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 44%, #eef6fb 0, var(--surface) 45%, var(--bg) 100%);
   box-shadow: var(--shadow);
 }
 
@@ -297,28 +290,17 @@ h2 em {
   height: 100% !important;
 }
 
-.model-caption {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1rem;
-  color: var(--muted);
-  font: 600 9px var(--label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 .model-loader {
   color: var(--accent-strong);
   font: 600 10px var(--label);
-  letter-spacing: 0.12em;
-  white-space: nowrap;
+  letter-spacing: 0.1em;
 }
 
 .skill-panel {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--surface);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -331,7 +313,7 @@ h2 em {
   color: var(--muted);
   border-bottom: 1px solid var(--line);
   font: 600 9px var(--label);
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -341,9 +323,9 @@ h2 em {
 
 .skill-card {
   display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: 0.55rem;
-  padding: 1.08rem 1.1rem;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
   border-bottom: 1px solid var(--line);
   opacity: 0.35;
   transition: opacity 0.3s ease, background 0.3s ease;
@@ -365,26 +347,26 @@ h2 em {
 
 .skill-card small {
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
   color: var(--accent-strong);
   font: 700 9px var(--label);
-  letter-spacing: 0.11em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .skill-card strong {
   display: block;
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.45;
   font-weight: 500;
 }
 
 .assembly-control {
   grid-column: 1 / -1;
-  padding: 1rem 1.15rem 1.1rem;
+  padding: 1rem 1.1rem 1.05rem;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 16px;
   background: var(--surface);
 }
 
@@ -393,7 +375,7 @@ h2 em {
   justify-content: space-between;
   color: var(--muted);
   font: 600 9px var(--label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -404,7 +386,7 @@ h2 em {
 .assembly-range {
   width: 100%;
   height: 18px;
-  margin: 1rem 0 0.5rem;
+  margin: 1rem 0 0.45rem;
   appearance: none;
   background: transparent;
   cursor: pointer;
@@ -412,21 +394,21 @@ h2 em {
 
 .assembly-range::-webkit-slider-runnable-track {
   height: 8px;
-  border: 1px solid #6a7782;
+  border: 1px solid var(--ink);
   border-radius: 999px;
   background: linear-gradient(
     90deg,
     var(--accent-strong) 0%,
     var(--accent-strong) calc(var(--value, 0) * 100%),
-    #e8e3db calc(var(--value, 0) * 100%)
+    var(--surface-soft) calc(var(--value, 0) * 100%)
   );
 }
 
 .assembly-range::-moz-range-track {
   height: 8px;
-  border: 1px solid #6a7782;
+  border: 1px solid var(--ink);
   border-radius: 999px;
-  background: #e8e3db;
+  background: var(--surface-soft);
 }
 
 .assembly-range::-webkit-slider-thumb {
@@ -438,7 +420,6 @@ h2 em {
   outline: 2px solid var(--ink);
   border-radius: 50%;
   background: var(--accent-strong);
-  box-shadow: 0 5px 16px rgba(91, 151, 201, 0.24);
 }
 
 .assembly-range::-moz-range-thumb {
@@ -455,20 +436,12 @@ h2 em {
   justify-content: space-between;
   color: var(--muted);
   font: 600 8px var(--label);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
 .assembly-labels span:nth-child(2) {
   color: var(--accent-strong);
-}
-
-.projects-section,
-.experience-section,
-.game-section,
-.about-section,
-.contact-section {
-  padding: 8rem 5.5vw;
 }
 
 .projects-section,
@@ -482,22 +455,15 @@ h2 em {
   justify-content: space-between;
   align-items: flex-end;
   gap: 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
 .section-heading-v5 h2 {
-  margin: 0.75rem 0 0;
+  margin: 0;
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: 0.84;
   letter-spacing: -0.075em;
   font-weight: 500;
-}
-
-.section-heading-v5 > p {
-  max-width: 32rem;
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
 }
 
 .project-stack {
@@ -508,7 +474,7 @@ h2 em {
   display: grid;
   grid-template-columns: 4rem minmax(0, 1fr) 2rem;
   gap: 1.5rem;
-  padding: 3.6rem 0;
+  padding: 3.25rem 0;
   border-bottom: 1px solid var(--line);
   transition: padding 0.3s ease, background 0.3s ease;
 }
@@ -525,44 +491,44 @@ h2 em {
 }
 
 .project-content {
-  max-width: 62rem;
+  max-width: 60rem;
 }
 
 .project-meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.9rem;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
   color: var(--accent-strong);
   font: 700 9px var(--label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .project-content h3 {
-  margin: 0 0 1rem;
-  font-size: clamp(3.2rem, 6vw, 6.2rem);
-  line-height: 0.86;
+  margin: 0 0 0.9rem;
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.88;
   letter-spacing: -0.075em;
   font-weight: 500;
 }
 
 .project-content p {
-  max-width: 52rem;
+  max-width: 50rem;
   margin: 0;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 1.4rem;
+  gap: 0.5rem;
+  margin-top: 1.3rem;
 }
 
 .project-tags span {
-  padding: 0.45rem 0.7rem;
+  padding: 0.4rem 0.65rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--muted);
@@ -582,11 +548,11 @@ h2 em {
   grid-template-columns: 1fr 1fr;
   gap: 8vw;
   align-items: end;
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
 }
 
 .about-intro h2 {
-  margin: 0.8rem 0 0;
+  margin: 0;
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: 0.84;
   letter-spacing: -0.075em;
@@ -594,7 +560,7 @@ h2 em {
 }
 
 .about-lead {
-  max-width: 35rem;
+  max-width: 34rem;
   margin: 0;
   font-size: clamp(1.2rem, 2.1vw, 2rem);
   line-height: 1.2;
@@ -615,11 +581,7 @@ h2 em {
 
 .about-copy > p:first-child {
   color: var(--ink);
-  font-size: 1.08rem;
-}
-
-.social-links {
-  margin-top: 2rem;
+  font-size: 1.05rem;
 }
 
 .skill-table {
@@ -628,9 +590,9 @@ h2 em {
 
 .skill-table-row {
   display: grid;
-  grid-template-columns: 2.5rem 8rem 1fr;
+  grid-template-columns: 2rem 8rem 1fr;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 1.15rem 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -647,14 +609,18 @@ h2 em {
 .skill-table-row p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.5;
+}
+
+.social-links {
+  margin-top: 2rem;
 }
 
 .experience-card {
   display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr) 5rem;
+  grid-template-columns: 12rem minmax(0, 1fr) 4rem;
   gap: 3rem;
-  padding: 2.2rem 0;
+  padding: 2rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -662,11 +628,11 @@ h2 em {
 .experience-period {
   color: var(--muted);
   font: 600 10px var(--label);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .experience-card h3 {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.6rem;
   font-size: clamp(2.2rem, 3.8vw, 3.8rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
@@ -676,12 +642,11 @@ h2 em {
 .experience-company {
   margin: 0 0 1rem;
   color: var(--accent-strong);
-  font: 700 13px var(--label);
-  letter-spacing: 0.01em;
+  font: 600 13px var(--label);
 }
 
 .experience-description {
-  max-width: 52rem;
+  max-width: 50rem;
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
@@ -691,15 +656,15 @@ h2 em {
   justify-self: end;
   color: var(--muted);
   font: 600 10px var(--label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
 }
 
 .game-section {
-  background: var(--surface-soft);
+  background: var(--bg);
 }
 
 .game-panel {
-  max-width: 1120px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -710,25 +675,25 @@ h2 em {
   padding: 1rem 1.1rem;
   border: 1px solid var(--line);
   border-bottom: 0;
-  border-radius: 20px 20px 0 0;
+  border-radius: 18px 18px 0 0;
   background: var(--surface);
 }
 
 .game-topbar > div {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .game-topbar span {
   color: var(--muted);
   font: 600 8px var(--label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .game-topbar strong {
-  font: 1.35rem var(--label);
+  font: 1.3rem var(--label);
   color: var(--ink);
 }
 
@@ -739,8 +704,8 @@ h2 em {
   border: 1px solid var(--ink);
   background: var(--ink);
   color: var(--bg);
-  font: 700 9px var(--label);
-  letter-spacing: 0.1em;
+  font: 600 9px var(--label);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -749,7 +714,7 @@ h2 em {
   height: 520px;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 18px 18px;
   background: var(--surface);
 }
 
@@ -757,8 +722,8 @@ h2 em {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(80, 95, 107, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(80, 95, 107, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(104, 100, 92, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(104, 100, 92, 0.11) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -771,10 +736,8 @@ h2 em {
   border-radius: 50%;
   background: var(--accent);
   color: var(--ink);
-  font: 600 1.5rem var(--label);
-  box-shadow:
-    0 0 0 10px rgba(184, 220, 255, 0.38),
-    0 8px 20px rgba(35, 55, 70, 0.12);
+  font: 500 1.5rem var(--label);
+  box-shadow: 0 0 0 10px rgba(184, 220, 255, 0.35), 0 8px 20px rgba(40, 50, 55, 0.1);
 }
 
 .packet:hover {
@@ -789,16 +752,15 @@ h2 em {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  background: rgba(255, 253, 248, 0.88);
+  gap: 0.7rem;
+  background: rgba(255, 253, 248, 0.9);
   backdrop-filter: blur(6px);
   text-align: center;
 }
 
 .game-state strong {
-  font: 700 1.1rem var(--label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font: 600 1.1rem var(--label);
+  letter-spacing: 0.08em;
 }
 
 .game-state span {
@@ -808,6 +770,7 @@ h2 em {
 
 .game-state button {
   justify-self: auto;
+  margin-top: 0.5rem;
 }
 
 .game-state.is-success strong {
@@ -818,19 +781,19 @@ h2 em {
   margin-top: 1.5rem;
   padding: 2rem;
   border: 1px solid var(--ink);
-  background: #fff;
+  background: var(--surface);
 }
 
 .meeting-ticket > span {
   color: var(--accent-strong);
   font: 700 9px var(--label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .meeting-ticket h3 {
   margin: 0.7rem 0 0.4rem;
-  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
   line-height: 0.9;
   letter-spacing: -0.06em;
   font-weight: 500;
@@ -850,8 +813,8 @@ h2 em {
 
 .meeting-ticket a {
   color: var(--ink);
-  font: 700 9px var(--label);
-  letter-spacing: 0.08em;
+  font: 600 9px var(--label);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -863,7 +826,7 @@ h2 em {
 }
 
 .contact-section h2 {
-  margin: 0.8rem 0 4rem;
+  margin: 0 0 4rem;
   font-size: clamp(4.5rem, 10vw, 9rem);
   line-height: 0.82;
   letter-spacing: -0.08em;
@@ -878,7 +841,6 @@ h2 em {
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--ink);
   font: clamp(1rem, 2vw, 1.5rem) var(--label);
-  font-weight: 500;
 }
 
 .contact-mail svg {
@@ -894,39 +856,56 @@ h2 em {
   justify-content: space-between;
   padding: 1.2rem 5.5vw;
   border-top: 1px solid var(--line);
-  color: var(--muted);
   background: var(--surface);
+  color: var(--muted);
   font: 600 9px var(--label);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-@media (max-width: 1100px) {
-  .system-workbench {
-    grid-template-columns: minmax(0, 1fr) 17rem;
+@media (max-width: 1000px) {
+  .system-layout {
+    grid-template-columns: 1fr;
   }
 
-  .system-model-card {
-    min-height: 520px;
+  .system-copy {
+    position: static;
+  }
+
+  .system-workbench {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+
+  .about-intro,
+  .about-grid-v5 {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+
+  .experience-mark {
+    display: none;
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .site-nav {
     padding: 0 6vw;
   }
 
   .nav-links {
-    display: none;
     position: absolute;
-    top: 78px;
+    top: 76px;
     left: 0;
     right: 0;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem 6vw;
-    background: var(--surface);
+    gap: 1.2rem;
+    padding: 1.5rem 6vw 2rem;
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
   }
 
@@ -938,20 +917,7 @@ h2 em {
     display: block;
   }
 
-  .hero {
-    padding: 8rem 6vw 3rem;
-  }
-
-  .hero-rail,
-  .hero-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero h1 {
-    font-size: clamp(4.5rem, 20vw, 8rem);
-  }
-
+  .hero,
   .system-section,
   .projects-section,
   .experience-section,
@@ -962,37 +928,53 @@ h2 em {
     padding-right: 6vw;
   }
 
-  .system-layout,
-  .system-workbench,
-  .about-grid-v5,
-  .about-intro {
+  .hero {
+    padding-top: 8rem;
+  }
+
+  .hero-rail,
+  .hero-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.5rem, 19vw, 8rem);
+  }
+
+  .system-workbench {
     grid-template-columns: 1fr;
   }
 
-  .system-copy {
-    position: static;
-  }
-
   .system-model-card {
-    min-height: 500px;
+    min-height: 480px;
   }
 
   .section-heading-v5 {
-    align-items: flex-start;
-    flex-direction: column;
+    margin-bottom: 3rem;
   }
 
   .project-row {
-    grid-template-columns: 2.5rem minmax(0, 1fr) 1.5rem;
+    grid-template-columns: 2rem minmax(0, 1fr) 1.5rem;
+    gap: 1rem;
+    padding: 2.4rem 0;
+  }
+
+  .project-content h3 {
+    font-size: clamp(2.6rem, 12vw, 4.5rem);
+  }
+
+  .skill-table-row {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .skill-table-row p {
+    grid-column: 2;
   }
 
   .experience-card {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .experience-mark {
-    justify-self: start;
+    gap: 0.8rem;
   }
 
   .game-topbar {
@@ -1007,45 +989,14 @@ h2 em {
   .game-arena {
     height: 440px;
   }
-}
 
-@media (max-width: 560px) {
-  .hero h1 {
-    font-size: clamp(4rem, 22vw, 6rem);
-  }
-
-  .system-model-card {
-    min-height: 420px;
-  }
-
-  .skill-panel {
-    border-radius: 18px;
-  }
-
-  .project-row {
-    grid-template-columns: 1.8rem minmax(0, 1fr) 1.25rem;
-    gap: 0.9rem;
-    padding: 2.5rem 0;
-  }
-
-  .project-row:hover {
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-  }
-
-  .project-content h3 {
-    font-size: clamp(2.6rem, 14vw, 4rem);
-  }
-
-  .game-arena {
-    height: 360px;
+  .contact-section h2 {
+    font-size: clamp(4rem, 16vw, 7rem);
   }
 
   .site-footer {
-    align-items: flex-start;
+    padding: 1.1rem 6vw;
     flex-direction: column;
-    gap: 0.45rem;
-    padding-left: 6vw;
-    padding-right: 6vw;
+    gap: 0.5rem;
   }
 }
