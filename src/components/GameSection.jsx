@@ -70,12 +70,9 @@ export default function GameSection({ t }) {
   return (
     <section className="game-section" id="game">
       <div className="section-heading-v5">
-        <div>
-          <h2>
-            {t.game.titleA} <em>{t.game.titleB}</em>
-          </h2>
-        </div>
-        <p>{t.game.intro}</p>
+        <h2>
+          Catch the <em>packets.</em>
+        </h2>
       </div>
 
       <div className="game-panel">
