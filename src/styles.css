@@ -254,8 +254,7 @@ h2 em {
 }
 
 .system-copy {
-  position: sticky;
-  top: 140px;
+  position: relative;
 }
 
 .system-copy h2 {
