@@ -10,7 +10,7 @@ import ContactSection from "./components/ContactSection";
 import { themes } from "./data/portfolio";
 
 export default function App() {
-  const [themeIndex, setThemeIndex] = useState(0);
+  const [themeIndex, setThemeIndex] = useState(1);
   const theme = themes[themeIndex];
 
   const cycleTheme = () => {
