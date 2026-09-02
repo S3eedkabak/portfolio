@@ -31,7 +31,11 @@ export default function App() {
       />
       <main>
         <Hero t={localized.translation} content={localized.content} />
-        <SystemSection t={localized.translation} content={localized.content} />
+        <SystemSection
+          t={localized.translation}
+          content={localized.content}
+          language={language}
+        />
         <ProjectsSection t={localized.translation} content={localized.content} />
         <AboutSection t={localized.translation} content={localized.content} />
         <ExperienceSection t={localized.translation} content={localized.content} />
