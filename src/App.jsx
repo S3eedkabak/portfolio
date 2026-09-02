@@ -31,7 +31,7 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <span>SAEID KABAK © 2026</span>
-        <span>BUILT WITH CARE.</span>
+        <span></span>
       </footer>
     </div>
   );

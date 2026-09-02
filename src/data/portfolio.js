@@ -1,7 +1,7 @@
 export const portfolio = {
   name: "Saeid Kabak",
   role: "Software Engineer",
-  location: "Leipzig · Germany",
+  location: "Leipzig | Berlin | Remote",
   email: "saeedkabak@gmail.com",
   github: "https://github.com/S3eedkabak",
   linkedin: "https://www.linkedin.com/in/saeed-saeed-5311a3309",
