@@ -4,7 +4,7 @@ export const portfolio = {
   location: "Leipzig | Berlin | Remote",
   email: "saeedkabak@gmail.com",
   github: "https://github.com/S3eedkabak",
-  linkedin: "www.linkedin.com/in/saeid-kabak-5311a3309",
+  linkedin: "https://www.linkedin.com/in/saeid-kabak-5311a3309",
   bio: "I build useful software around real constraints: robust applications, asynchronous systems, and AI workflows that have to survive contact with reality.",
   education: "BSc (Hons) Software Engineering · Lancaster University Leipzig · Expected October 2026",
   skills: [
