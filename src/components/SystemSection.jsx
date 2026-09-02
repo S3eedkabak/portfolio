@@ -6,7 +6,7 @@ export default function SystemSection({ t, content }) {
   return (
     <section className="system-section" id="system">
       <div className="system-layout">
-        <div className="system-copy"><p className="section-kicker">{t.system.kicker}</p><h2>{t.system.titleA} <em>{t.system.titleB}</em></h2><p>{t.system.description}</p></div>
+        <div className="system-copy"><h2>{t.system.titleA} <em>{t.system.titleB}</em></h2><p>{t.system.description}</p></div>
         <div className="system-workbench">
           <div className="system-model-card"><MacBookScene progress={progress}/><span className="model-caption">{t.system.caption}</span></div>
           <aside className="skill-panel" aria-label={t.system.profile}>
