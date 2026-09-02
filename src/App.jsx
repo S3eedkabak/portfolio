@@ -7,30 +7,26 @@ import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import GameSection from "./components/GameSection";
 import ContactSection from "./components/ContactSection";
-import { themes } from "./data/portfolio";
+import { getTranslation } from "./data/i18n";
 
 export default function App() {
-  const [themeIndex, setThemeIndex] = useState(1);
-  const theme = themes[themeIndex];
-
-  const cycleTheme = () => {
-    setThemeIndex((current) => (current + 1) % themes.length);
-  };
+  const [language, setLanguage] = useState("EN");
+  const t = getTranslation(language);
 
   return (
-    <div className={`site theme-${theme.id}`}>
-      <Navbar theme={theme.label} onThemeChange={cycleTheme} />
+    <div className="site theme-paper" lang={language.toLowerCase()} dir={language === "AR" ? "rtl" : "ltr"}>
+      <Navbar language={language} onLanguageChange={setLanguage} t={t} />
       <main>
-        <Hero />
-        <SystemSection />
-        <ProjectsSection />
-        <AboutSection />
-        <ExperienceSection />
-        <GameSection />
-        <ContactSection />
+        <Hero t={t} />
+        <SystemSection t={t} />
+        <ProjectsSection t={t} language={language} />
+        <AboutSection t={t} />
+        <ExperienceSection t={t} />
+        <GameSection t={t} />
+        <ContactSection t={t} />
       </main>
       <footer className="site-footer">
-        <span>SAEID KABAK © 2026</span>
+        <span>{t.footer}</span>
         <span></span>
       </footer>
     </div>
