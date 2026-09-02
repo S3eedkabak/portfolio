@@ -1,13 +1,13 @@
 import { portfolio } from "../data/portfolio";
 
-export default function ExperienceSection({ t, content }) {
+export default function ExperienceSection({ content }) {
   const { experience } = portfolio;
 
   return (
     <section className="experience-section">
       <div className="section-heading-v5">
         <h2>
-          {t.experience.titleA} <em>{t.experience.titleB}</em>
+          Production, <em>not theory.</em>
         </h2>
       </div>
 
