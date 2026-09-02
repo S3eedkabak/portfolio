@@ -1,23 +1,35 @@
 import { useState } from "react";
 import MacBookScene from "../MacBookScene";
 
-export default function SystemSection({ t, content }) {
+const toolsCopy = {
+  EN: {
+    title: "The tools",
+    description: "These tools help me do what I do.",
+  },
+  DE: {
+    title: "Die Werkzeuge",
+    description: "Diese Werkzeuge helfen mir bei dem, was ich tue.",
+  },
+  AR: {
+    title: "الأدوات",
+    description: "هاي الأدوات بتساعدني أعمل شغلي.",
+  },
+  SK: {
+    title: "Nástroje",
+    description: "Tieto nástroje mi pomáhajú robiť to, čo robím.",
+  },
+};
+
+export default function SystemSection({ content, language }) {
   const [progress, setProgress] = useState(0);
+  const copy = toolsCopy[language] ?? toolsCopy.EN;
 
   return (
     <section className="system-section" id="system">
       <div className="system-layout">
         <div className="system-copy">
-          <h2>
-            {t.system.titleA}
-            {t.system.titleB && (
-              <>
-                <br />
-                <em>{t.system.titleB}</em>
-              </>
-            )}
-          </h2>
-          <p>{t.system.description}</p>
+          <h2>{copy.title}</h2>
+          <p>{copy.description}</p>
         </div>
 
         <div className="system-workbench">
@@ -28,7 +40,9 @@ export default function SystemSection({ t, content }) {
           <aside className="skill-panel" aria-label="Skills">
             <div className="skill-panel-head">
               <span>Skills</span>
-              <strong>{String(Math.round(progress * 100)).padStart(3, "0")}%</strong>
+              <strong>
+                {String(Math.round(progress * 100)).padStart(3, "0")}&#37;
+              </strong>
             </div>
 
             {content.skills.map(([label, value], index) => {
@@ -51,13 +65,13 @@ export default function SystemSection({ t, content }) {
 
           <div className="assembly-control">
             <div className="control-copy">
-              <span>{t.system.assembly}</span>
-              <strong>{Math.round(progress * 100)}%</strong>
+              <span>Assembly</span>
+              <strong>{Math.round(progress * 100)}&#37;</strong>
             </div>
 
             <input
               className="assembly-range"
-              aria-label={t.system.assembly}
+              aria-label="Assembly"
               type="range"
               min="0"
               max="1"
@@ -68,9 +82,9 @@ export default function SystemSection({ t, content }) {
             />
 
             <div className="assembly-labels">
-              <span>{t.system.closed}</span>
-              <span>{t.system.open}</span>
-              <span>{t.system.apart}</span>
+              <span>Closed</span>
+              <span>Open</span>
+              <span>Apart</span>
             </div>
           </div>
         </div>
