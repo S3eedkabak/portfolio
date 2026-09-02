@@ -1,13 +1,7 @@
-import { ArrowDownRight, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
 export default function Hero({ t, content }) {
-  const enterSystem = () => {
-    document
-      .getElementById("system")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="hero" id="top">
       <div className="hero-rail">
@@ -33,11 +27,6 @@ export default function Hero({ t, content }) {
             {t.contact.linkedin}
           </a>
         </div>
-
-        <button className="text-button" onClick={enterSystem}>
-          {t.hero.explore}
-          <ArrowDownRight size={17} />
-        </button>
       </div>
     </section>
   );
