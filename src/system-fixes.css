@@ -39,3 +39,12 @@
   font-family: var(--serif);
   font-style: italic;
 }
+
+/* Keep the language-specific desktop layout override from defeating
+   the responsive single-column tools layout on phones/tablets. */
+@media (max-width: 1000px) {
+  .site[lang="de"] .system-layout,
+  .site[lang="sk"] .system-layout {
+    grid-template-columns: 1fr;
+  }
+}
