@@ -4,11 +4,7 @@ export const translations = {
   EN: {
     nav: { system: "System", work: "Work", about: "About", game: "Game", linkedin: "LinkedIn", language: "Language" },
     hero: { eyebrow: "Engineer / builder / problem solver", explore: "Explore the work", role: "SOFTWARE ENGINEER" },
-    system: {
-      kicker: "01 / Under the hood", titleA: "Take it", titleB: "apart.",
-      description: "My box of tools I use to turn messy requirements into software.",
-      caption: "My MacBook, that helps me do what I do.", profile: "TECHNICAL PROFILE", assembly: "ASSEMBLY", closed: "CLOSED", open: "OPEN", apart: "APART"
-    },
+    system: { kicker: "01 / Under the hood", titleA: "Take it", titleB: "apart.", description: "My box of tools I use to turn messy requirements into software.", caption: "My MacBook, that helps me do what I do.", profile: "TECHNICAL PROFILE", assembly: "ASSEMBLY", closed: "CLOSED", open: "OPEN", apart: "APART" },
     work: { kicker: "02 / Selected work", titleA: "Things I've", titleB: "built.", intro: "Two real systems. No stock mockups, no fake dashboards. Click through to the repositories." },
     about: { kicker: "03 / The engineer", titleA: "More than", titleB: "the stack.", lead: "I like difficult problems for the right reasons. Systems should be understandable, resilient, and built around the people who have to use them.", body: "My work sits at the intersection of software engineering, AI, and the consumer. I care about the boring details that make the flashy demo survive Monday morning." },
     experience: { kicker: "04 / Experience", titleA: "Production,", titleB: "not theory." },
@@ -51,6 +47,36 @@ export const translations = {
   }
 };
 
-export function getTranslation(language) {
-  return translations[language] ?? translations.EN;
-}
+export const localizedContent = {
+  EN: {
+    bio: "I build useful software around real constraints: robust applications, asynchronous systems, and AI workflows that have to survive contact with reality.",
+    education: "BSc (Hons) Software Engineering · Lancaster University Leipzig · Expected October 2026",
+    skills: [["Languages", "Java · Python · JavaScript · HTML/CSS · SQL"],["Backend", "Node.js · Express · REST APIs · RabbitMQ"],["Architecture", "Layered systems · Event-driven architecture · Sync/async workflows"],["AI & Data", "RAG pipelines · Vector search · Embeddings · Algorithms"],["DevOps", "Docker · Docker Compose · Jenkins · Git · Linux/Unix"]],
+    projects: [["PRODUCTION MOBILE", "A production mobile application for forest scientists to gather forestry data in remote environments without cellular or Wi-Fi connectivity."],["AI INFRASTRUCTURE", "A collaborative RAG chatbot built around asynchronous processing, retrieval, and conversational AI."]],
+    experience: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field-research application."
+  },
+  DE: {
+    bio: "Ich entwickle nützliche Software unter realen Bedingungen: robuste Anwendungen, asynchrone Systeme und KI-Workflows, die der Realität standhalten müssen.",
+    education: "BSc (Hons) Software Engineering · Lancaster University Leipzig · Voraussichtlich Oktober 2026",
+    skills: [["Sprachen", "Java · Python · JavaScript · HTML/CSS · SQL"],["Backend", "Node.js · Express · REST APIs · RabbitMQ"],["Architektur", "Schichtsysteme · Event-driven Architecture · Sync/Async Workflows"],["KI & Daten", "RAG-Pipelines · Vektorsuche · Embeddings · Algorithmen"],["DevOps", "Docker · Docker Compose · Jenkins · Git · Linux/Unix"]],
+    projects: [["PRODUKTIONS-MOBILAPP", "Eine mobile Produktionsanwendung für Forstwissenschaftler, um Forstdaten in abgelegenen Gebieten ohne Mobilfunk oder WLAN zu erfassen."],["KI-INFRASTRUKTUR", "Ein kollaborativer RAG-Chatbot auf Basis von asynchroner Verarbeitung, Retrieval und dialogorientierter KI."]],
+    experience: "Ich leitete die produktive Auslieferung von GreenPoint und verantwortete technische Entscheidungen von der Produktionsreife bis zur Auslieferung einer mobilen Feldforschungsanwendung."
+  },
+  AR: {
+    bio: "أبني برمجيات مفيدة ضمن قيود واقعية: تطبيقات متينة، وأنظمة غير متزامنة، وتدفقات عمل للذكاء الاصطناعي تتحمل الاستخدام الحقيقي.",
+    education: "بكالوريوس هندسة برمجيات · جامعة لانكستر لايبزيغ · متوقع أكتوبر 2026",
+    skills: [["اللغات", "Java · Python · JavaScript · HTML/CSS · SQL"],["الخلفية البرمجية", "Node.js · Express · REST APIs · RabbitMQ"],["الهندسة المعمارية", "أنظمة طبقية · بنية مدفوعة بالأحداث · تدفقات متزامنة وغير متزامنة"],["الذكاء الاصطناعي والبيانات", "RAG · البحث المتجهي · Embeddings · الخوارزميات"],["DevOps", "Docker · Docker Compose · Jenkins · Git · Linux/Unix"]],
+    projects: [["تطبيق ميداني إنتاجي", "تطبيق جوال إنتاجي لعلماء الغابات لجمع بيانات الغابات في البيئات النائية دون اتصال خلوي أو Wi-Fi."],["بنية ذكاء اصطناعي", "روبوت محادثة تعاوني بنظام RAG يعتمد على المعالجة غير المتزامنة والاسترجاع والذكاء الاصطناعي الحواري."]],
+    experience: "قدت تسليم GreenPoint إلى الإنتاج ووجهت القرارات التقنية من الجاهزية للإنتاج حتى الإطلاق لتطبيق بحث ميداني على الهاتف."
+  },
+  SK: {
+    bio: "Tvorím užitočný softvér pre reálne podmienky: odolné aplikácie, asynchrónne systémy a AI workflowy, ktoré musia obstáť v praxi.",
+    education: "BSc (Hons) Software Engineering · Lancaster University Leipzig · Očakávané ukončenie október 2026",
+    skills: [["Jazyky", "Java · Python · JavaScript · HTML/CSS · SQL"],["Backend", "Node.js · Express · REST APIs · RabbitMQ"],["Architektúra", "Vrstvené systémy · event-driven architektúra · sync/async workflowy"],["AI a dáta", "RAG pipeline · vektorové vyhľadávanie · embeddings · algoritmy"],["DevOps", "Docker · Docker Compose · Jenkins · Git · Linux/Unix"]],
+    projects: [["PRODUKČNÁ MOBILNÁ APLIKÁCIA", "Produkčná mobilná aplikácia pre lesných vedcov na zber údajov v odľahlom prostredí bez mobilného signálu alebo Wi-Fi."],["AI INFRAŠTRUKTÚRA", "Kolaboratívny RAG chatbot postavený na asynchrónnom spracovaní, retrievalu a konverzačnej AI."]],
+    experience: "Viedol som produkčné nasadenie GreenPoint a technické rozhodnutia od pripravenosti na produkciu až po dodanie mobilnej aplikácie pre terénny výskum."
+  }
+};
+
+export function getTranslation(language) { return translations[language] ?? translations.EN; }
+export function getContent(language) { return localizedContent[language] ?? localizedContent.EN; }
