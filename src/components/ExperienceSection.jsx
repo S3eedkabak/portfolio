@@ -1,17 +1,14 @@
 import { portfolio } from "../data/portfolio";
 
-export default function ExperienceSection({ t, content }) {
+export default function ExperienceSection({ content }) {
   const { experience } = portfolio;
 
   return (
     <section className="experience-section">
       <div className="section-heading-v5">
-        <div>
-          <p className="section-kicker">{t.experience.kicker}</p>
-          <h2>
-            {t.experience.titleA} <em>{t.experience.titleB}</em>
-          </h2>
-        </div>
+        <h2>
+          Production, <em>not theory.</em>
+        </h2>
       </div>
 
       <article className="experience-card">
