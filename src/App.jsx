@@ -10,6 +10,13 @@ import ContactSection from "./components/ContactSection";
 import { getTranslation, getContent } from "./data/i18n";
 import { getSyrianArabic } from "./data/syrianArabic";
 
+const contactTitles = {
+  EN: { titleA: "Let's", titleB: "connect." },
+  DE: { titleA: "Lass uns", titleB: "verbinden." },
+  AR: { titleA: "خلينا", titleB: "نتواصل." },
+  SK: { titleA: "Spojme", titleB: "sa." },
+};
+
 export default function App() {
   const [language, setLanguage] = useState("EN");
   const baseTranslation = getTranslation(language);
@@ -26,12 +33,14 @@ export default function App() {
       }
     : localized.translation.system;
 
-  const pageTranslation = language === "AR"
-    ? {
-        ...localized.translation,
-        system: systemTranslation,
-      }
-    : localized.translation;
+  const pageTranslation = {
+    ...localized.translation,
+    system: systemTranslation,
+    contact: {
+      ...localized.translation.contact,
+      ...contactTitles[language],
+    },
+  };
 
   return (
     <div
