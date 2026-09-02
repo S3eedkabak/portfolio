@@ -1,7 +1,7 @@
 /* Small language-specific overrides for the tools section. */
 
 .site[lang="de"] .system-copy h2 {
-  font-size: clamp(3rem, 4.6vw, 4.5rem);
+  font-size: clamp(2.8rem, 4.2vw, 4.1rem);
   max-width: 100%;
   overflow-wrap: normal;
   word-break: normal;
