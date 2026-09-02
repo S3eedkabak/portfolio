@@ -1,6 +1,13 @@
 /* Small language-specific overrides for the tools section. */
 
-.site[lang="de"] .system-copy h2,
+.site[lang="de"] .system-copy h2 {
+  font-size: clamp(2.8rem, 4.2vw, 4.1rem);
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  letter-spacing: -0.08em;
+}
+
 .site[lang="sk"] .system-copy h2 {
   font-size: clamp(3.4rem, 6vw, 5.6rem);
   max-width: 100%;
