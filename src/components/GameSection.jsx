@@ -141,7 +141,6 @@ export default function GameSection({ t }) {
 
         {won && (
           <div className="meeting-ticket">
-            <span>{t.game.ticket}</span>
             <h3>{t.game.congratulations}</h3>
             <p>{t.game.ticketText}</p>
 
