@@ -1000,69 +1000,112 @@ h2 em {
   }
 }
 
-
 /* Interactive showcase additions */
 .system-model-card {
-  min-height: 650px;
+  min-height: 760px;
   isolation: isolate;
+  overflow: hidden;
 }
 
-.portfolio-macbook {
-  position: absolute;
-  inset: 0;
+.portfolio-macbook-scroll {
+  position: relative;
+  min-height: 760px;
+  height: 100%;
+}
+
+.portfolio-macbook-stage {
+  position: sticky;
+  top: 4vh;
+  height: 690px;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  padding-top: 9rem;
-  perspective: 800px;
+  align-items: flex-start;
+  padding-top: 5rem;
+  perspective: 900px;
   overflow: hidden;
+}
+
+.portfolio-macbook-title {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.3rem;
+  right: 1.3rem;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font: 600 8px/1 var(--label);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.portfolio-macbook-title strong {
+  color: var(--accent-strong);
+  font-weight: 600;
 }
 
 .portfolio-macbook-lid,
 .portfolio-macbook-screen {
   position: absolute;
-  width: min(32rem, 88%);
-  aspect-ratio: 2.08 / 1;
+  width: min(32rem, 82%);
+  height: 12rem;
   border-radius: 1rem;
-  background: #010101;
-  box-shadow: 0 25px 60px rgba(34, 51, 61, 0.18);
 }
 
 .portfolio-macbook-lid {
   z-index: 1;
-  transform: perspective(800px) rotateX(-25deg);
+  top: 8.2rem;
+  transform: perspective(900px) rotateX(-25deg);
   transform-origin: bottom;
-  padding: 0.5rem;
+  padding: .55rem;
+  background: #010101;
+  box-shadow: 0 25px 60px rgba(34, 51, 61, .2);
 }
 
-.portfolio-macbook-logo {
-  position: absolute;
-  inset: 0;
+.portfolio-macbook-lid-inner {
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
+  border-radius: .65rem;
   color: #fff;
-  font-size: 3.2rem;
+  background: #010101;
+  box-shadow: inset 0 2px 0 2px #171717;
+}
+
+.portfolio-macbook-lid-inner svg {
+  width: 4rem;
+  height: 4rem;
 }
 
 .portfolio-macbook-screen {
   z-index: 3;
-  height: min(22rem, 48vw);
-  aspect-ratio: auto;
-  border-radius: 1rem;
-  padding: 0.5rem;
+  top: 8.2rem;
+  height: 24rem;
+  padding: .55rem;
+  background: #010101;
   transform-style: preserve-3d;
   transform-origin: top;
+  box-shadow: 0 25px 60px rgba(34, 51, 61, .22);
 }
 
-.portfolio-macbook-screen-inner {
+.portfolio-macbook-screen-bezel {
   position: absolute;
-  inset: 0.5rem;
+  inset: .55rem;
   overflow: hidden;
-  border-radius: 0.65rem;
+  border-radius: .65rem;
   background: #080808;
 }
 
-.portfolio-macbook-screen-inner img {
+.portfolio-macbook-screen-bezel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.portfolio-macbook-screen-bezel img {
   width: 100%;
   height: 100%;
   display: block;
@@ -1073,44 +1116,42 @@ h2 em {
 .portfolio-macbook-base {
   position: absolute;
   z-index: 2;
-  top: 25.2rem;
-  width: min(32rem, 88%);
-  height: 13.5rem;
-  padding: 0.7rem;
+  top: 30.7rem;
+  width: min(32rem, 82%);
+  height: 15rem;
+  padding: .75rem;
   border-radius: 0 0 1.25rem 1.25rem;
-  background: linear-gradient(180deg, #272729, #111);
-  box-shadow: 0 28px 55px rgba(34, 51, 61, 0.18);
+  background: linear-gradient(180deg, #303033 0%, #141416 100%);
+  box-shadow: 0 28px 55px rgba(34, 51, 61, .2);
 }
 
-.portfolio-macbook-speakers {
-  position: absolute;
-  left: 6%;
-  top: 0.8rem;
-  width: 8%;
-  height: 4.8rem;
-  opacity: 0.7;
-  background-image: radial-gradient(circle, #050507 0.7px, transparent 0.7px);
+.portfolio-macbook-topbar {
+  width: 80%;
+  height: .85rem;
+  margin: -.05rem auto .35rem;
+  border-radius: 0 0 .25rem .25rem;
+  background: #050505;
+}
+
+.portfolio-macbook-deck {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  height: 7.8rem;
+  align-items: start;
+}
+
+.portfolio-macbook-speaker-grid {
+  height: 6.2rem;
+  margin-top: .15rem;
+  background-image: radial-gradient(circle, #08080a .55px, transparent .55px);
   background-size: 3px 3px;
+  opacity: .9;
 }
 
-.portfolio-macbook-speakers::after {
-  content: "";
-  position: absolute;
-  left: 1110%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, #050507 0.7px, transparent 0.7px);
-  background-size: 3px 3px;
-}
-
-.portfolio-macbook-keys {
-  position: relative;
-  z-index: 2;
-  width: 78%;
-  margin: 0 auto;
-  padding: 0.35rem;
-  border-radius: 0.4rem;
+.portfolio-macbook-keypad {
+  margin: 0 .2rem;
+  padding: .28rem;
+  border-radius: .45rem;
   background: #050505;
 }
 
@@ -1120,37 +1161,74 @@ h2 em {
   margin-bottom: 2px;
 }
 
-.portfolio-macbook-key-row:last-child { margin-bottom: 0; }
+.portfolio-macbook-key-row:last-child {
+  margin-bottom: 0;
+}
 
-.portfolio-macbook-key-row span {
+.portfolio-macbook-key {
   flex: 1;
   min-width: 0;
-  height: 1.1rem;
+  height: 1.05rem;
   display: grid;
   place-items: center;
   overflow: hidden;
   border-radius: 3px;
+  color: rgba(255,255,255,.75);
   background: #0a090d;
-  color: rgba(255,255,255,.72);
-  box-shadow: inset 0 -0.5px 2px rgba(13,13,15,.95);
+  box-shadow: inset 0 -.5px 2px rgba(13,13,15,.95), 0 0 0 .5px rgba(255,255,255,.06);
   font: 500 4px/1 var(--label);
+  letter-spacing: 0;
 }
 
-.portfolio-macbook-key-row span:nth-child(5) { flex: 1.6; }
+.portfolio-macbook-key-row:first-child .portfolio-macbook-key:first-child,
+.portfolio-macbook-key-row:nth-child(3) .portfolio-macbook-key:first-child {
+  flex: 1.6;
+}
+
+.portfolio-macbook-key-row:nth-child(2) .portfolio-macbook-key:last-child {
+  flex: 1.6;
+}
+
+.portfolio-macbook-key-row:nth-child(4) .portfolio-macbook-key:first-child,
+.portfolio-macbook-key-row:nth-child(4) .portfolio-macbook-key:last-child {
+  flex: 1.45;
+}
+
+.portfolio-macbook-key-row:nth-child(5) .portfolio-macbook-key:first-child,
+.portfolio-macbook-key-row:nth-child(5) .portfolio-macbook-key:last-child {
+  flex: 1.75;
+}
+
+.portfolio-macbook-key-row:nth-child(6) .portfolio-macbook-key:nth-child(5) {
+  flex: 4.4;
+}
+
+.portfolio-macbook-space {
+  color: transparent;
+}
 
 .portfolio-macbook-trackpad {
+  width: 40%;
+  height: 3.25rem;
+  margin: .2rem auto 0;
+  border-radius: .75rem;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,.2) inset;
+}
+
+.portfolio-macbook-front {
   position: absolute;
-  left: 30%;
-  right: 30%;
-  bottom: 0.9rem;
-  height: 2.8rem;
-  border-radius: 0.7rem;
-  box-shadow: 0 0 1px 1px rgba(0,0,0,.15) inset;
+  left: 50%;
+  bottom: 0;
+  width: 5rem;
+  height: .45rem;
+  transform: translateX(-50%);
+  border-radius: .8rem .8rem 0 0;
+  background: linear-gradient(to top, #272729, #050505);
 }
 
 .contact-content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
   align-items: center;
   gap: 6vw;
   min-height: 78vh;
@@ -1185,15 +1263,78 @@ h2 em {
 }
 
 @media (max-width: 1000px) {
-  .system-model-card { min-height: 620px; }
-  .contact-content { grid-template-columns: 1fr; }
-  .contact-robot { min-height: 500px; height: 520px; }
+  .system-model-card {
+    min-height: 700px;
+  }
+
+  .portfolio-macbook-scroll {
+    min-height: 700px;
+  }
+
+  .portfolio-macbook-stage {
+    height: 640px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-robot {
+    min-height: 500px;
+    height: 520px;
+  }
 }
 
 @media (max-width: 800px) {
-  .system-model-card { min-height: 560px; }
-  .portfolio-macbook { padding-top: 7rem; }
-  .portfolio-macbook-base { top: 21rem; height: 10.5rem; }
-  .portfolio-macbook-key-row span { height: .85rem; font-size: 3px; }
-  .contact-robot { min-height: 420px; height: 440px; border-radius: 1.5rem; }
+  .system-model-card {
+    min-height: 620px;
+  }
+
+  .portfolio-macbook-scroll {
+    min-height: 620px;
+  }
+
+  .portfolio-macbook-stage {
+    height: 580px;
+    top: 2vh;
+    padding-top: 4rem;
+  }
+
+  .portfolio-macbook-lid,
+  .portfolio-macbook-screen,
+  .portfolio-macbook-base {
+    width: 88%;
+  }
+
+  .portfolio-macbook-screen {
+    height: 18rem;
+  }
+
+  .portfolio-macbook-base {
+    top: 25rem;
+    height: 12rem;
+  }
+
+  .portfolio-macbook-deck {
+    height: 6.2rem;
+  }
+
+  .portfolio-macbook-speaker-grid {
+    height: 5rem;
+  }
+
+  .portfolio-macbook-key {
+    height: .82rem;
+    font-size: 3px;
+  }
+
+  .portfolio-macbook-trackpad {
+    height: 2.5rem;
+  }
+
+  .contact-robot {
+    min-height: 420px;
+    height: 440px;
+    border-radius: 1.5rem;
+  }
 }
