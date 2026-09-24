@@ -7,6 +7,7 @@ import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import GameSection from "./components/GameSection";
 import ContactSection from "./components/ContactSection";
+import RobotPanel from "./components/RobotPanel";
 import { getTranslation, getContent } from "./data/i18n";
 import { getSyrianArabic } from "./data/syrianArabic";
 
@@ -60,6 +61,7 @@ export default function App() {
         <AboutSection t={pageTranslation} content={localized.content} />
         <ExperienceSection t={pageTranslation} content={localized.content} />
         <GameSection t={pageTranslation} />
+        <RobotPanel t={pageTranslation} />
         <ContactSection t={pageTranslation} />
       </main>
       <footer className="site-footer">
