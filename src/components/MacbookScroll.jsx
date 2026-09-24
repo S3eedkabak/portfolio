@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function MacbookScroll({ progress = 0 }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const [isMobile, setIsMobile] = useState(false);
   const controlled = useMotionValue(progress);
 
@@ -21,7 +19,7 @@ export default function MacbookScroll({ progress = 0 }) {
   const rotate = useTransform(controlled, [0.1, 0.13, 0.3], [-28, -28, 0]);
 
   return (
-    <div ref={ref} className="portfolio-macbook">
+    <div className="portfolio-macbook">
       <div className="portfolio-macbook-lid">
         <div className="portfolio-macbook-logo"><span>⌁</span></div>
       </div>
