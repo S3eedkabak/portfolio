@@ -999,3 +999,201 @@ h2 em {
     gap: 0.5rem;
   }
 }
+
+
+/* Interactive showcase additions */
+.system-model-card {
+  min-height: 650px;
+  isolation: isolate;
+}
+
+.portfolio-macbook {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 9rem;
+  perspective: 800px;
+  overflow: hidden;
+}
+
+.portfolio-macbook-lid,
+.portfolio-macbook-screen {
+  position: absolute;
+  width: min(32rem, 88%);
+  aspect-ratio: 2.08 / 1;
+  border-radius: 1rem;
+  background: #010101;
+  box-shadow: 0 25px 60px rgba(34, 51, 61, 0.18);
+}
+
+.portfolio-macbook-lid {
+  z-index: 1;
+  transform: perspective(800px) rotateX(-25deg);
+  transform-origin: bottom;
+  padding: 0.5rem;
+}
+
+.portfolio-macbook-logo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 3.2rem;
+}
+
+.portfolio-macbook-screen {
+  z-index: 3;
+  height: min(22rem, 48vw);
+  aspect-ratio: auto;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transform-style: preserve-3d;
+  transform-origin: top;
+}
+
+.portfolio-macbook-screen-inner {
+  position: absolute;
+  inset: 0.5rem;
+  overflow: hidden;
+  border-radius: 0.65rem;
+  background: #080808;
+}
+
+.portfolio-macbook-screen-inner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.portfolio-macbook-base {
+  position: absolute;
+  z-index: 2;
+  top: 25.2rem;
+  width: min(32rem, 88%);
+  height: 13.5rem;
+  padding: 0.7rem;
+  border-radius: 0 0 1.25rem 1.25rem;
+  background: linear-gradient(180deg, #272729, #111);
+  box-shadow: 0 28px 55px rgba(34, 51, 61, 0.18);
+}
+
+.portfolio-macbook-speakers {
+  position: absolute;
+  left: 6%;
+  top: 0.8rem;
+  width: 8%;
+  height: 4.8rem;
+  opacity: 0.7;
+  background-image: radial-gradient(circle, #050507 0.7px, transparent 0.7px);
+  background-size: 3px 3px;
+}
+
+.portfolio-macbook-speakers::after {
+  content: "";
+  position: absolute;
+  left: 1110%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #050507 0.7px, transparent 0.7px);
+  background-size: 3px 3px;
+}
+
+.portfolio-macbook-keys {
+  position: relative;
+  z-index: 2;
+  width: 78%;
+  margin: 0 auto;
+  padding: 0.35rem;
+  border-radius: 0.4rem;
+  background: #050505;
+}
+
+.portfolio-macbook-key-row {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.portfolio-macbook-key-row:last-child { margin-bottom: 0; }
+
+.portfolio-macbook-key-row span {
+  flex: 1;
+  min-width: 0;
+  height: 1.1rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #0a090d;
+  color: rgba(255,255,255,.72);
+  box-shadow: inset 0 -0.5px 2px rgba(13,13,15,.95);
+  font: 500 4px/1 var(--label);
+}
+
+.portfolio-macbook-key-row span:nth-child(5) { flex: 1.6; }
+
+.portfolio-macbook-trackpad {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  bottom: 0.9rem;
+  height: 2.8rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,.15) inset;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  align-items: center;
+  gap: 6vw;
+  min-height: 78vh;
+}
+
+.contact-copy {
+  min-width: 0;
+}
+
+.contact-robot {
+  position: relative;
+  min-height: 560px;
+  height: min(68vh, 680px);
+  overflow: hidden;
+  border: 1px solid rgba(92,149,200,.25);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 55% 45%, rgba(184,220,255,.9), rgba(238,246,251,.78) 38%, rgba(255,253,248,.95) 72%),
+    var(--surface);
+  box-shadow: 0 30px 80px rgba(60,90,110,.12);
+}
+
+.contact-robot-scene {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-robot-loader {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(184,220,255,.55), transparent 55%);
+}
+
+@media (max-width: 1000px) {
+  .system-model-card { min-height: 620px; }
+  .contact-content { grid-template-columns: 1fr; }
+  .contact-robot { min-height: 500px; height: 520px; }
+}
+
+@media (max-width: 800px) {
+  .system-model-card { min-height: 560px; }
+  .portfolio-macbook { padding-top: 7rem; }
+  .portfolio-macbook-base { top: 21rem; height: 10.5rem; }
+  .portfolio-macbook-key-row span { height: .85rem; font-size: 3px; }
+  .contact-robot { min-height: 420px; height: 440px; border-radius: 1.5rem; }
+}
