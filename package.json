@@ -15,7 +15,9 @@
     "three": "^0.169.0",
     "@react-three/drei": "^9.117.3",
     "@react-three/fiber": "^8.17.10",
-    "framer-motion": "^12.23.24"
+    "framer-motion": "^12.23.24",
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.10.49"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
