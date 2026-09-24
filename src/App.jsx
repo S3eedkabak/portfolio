@@ -7,7 +7,6 @@ import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import GameSection from "./components/GameSection";
 import ContactSection from "./components/ContactSection";
-import RobotPanel from "./components/RobotPanel";
 import { getTranslation, getContent } from "./data/i18n";
 import { getSyrianArabic } from "./data/syrianArabic";
 
@@ -44,16 +43,8 @@ export default function App() {
   };
 
   return (
-    <div
-      className="site theme-paper"
-      lang={language.toLowerCase()}
-      dir={language === "AR" ? "rtl" : "ltr"}
-    >
-      <Navbar
-        language={language}
-        onLanguageChange={setLanguage}
-        t={pageTranslation}
-      />
+    <div className="site theme-paper" lang={language.toLowerCase()} dir={language === "AR" ? "rtl" : "ltr"}>
+      <Navbar language={language} onLanguageChange={setLanguage} t={pageTranslation} />
       <main>
         <Hero t={pageTranslation} content={localized.content} />
         <SystemSection t={pageTranslation} content={localized.content} />
@@ -61,7 +52,6 @@ export default function App() {
         <AboutSection t={pageTranslation} content={localized.content} />
         <ExperienceSection t={pageTranslation} content={localized.content} />
         <GameSection t={pageTranslation} />
-        <RobotPanel t={pageTranslation} />
         <ContactSection t={pageTranslation} />
       </main>
       <footer className="site-footer">
