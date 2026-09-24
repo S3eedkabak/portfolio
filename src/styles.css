@@ -108,6 +108,9 @@ a { color: inherit; text-decoration: none; }
 .project-macbook-copy a { display: inline-flex; padding: 0.8rem 1rem; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: 600 9px var(--label); letter-spacing: 0.1em; text-transform: uppercase; transition: background .2s ease, border-color .2s ease; }
 .project-macbook-copy a:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
 .project-macbook-stage { position: relative; min-height: 530px; display: flex; align-items: center; justify-content: center; perspective: 1100px; }
+.macbook-demo-lid { position: absolute; z-index: 1; width: min(620px, 100%); aspect-ratio: 1.55; border: 8px solid #111; border-radius: 20px 20px 10px 10px; background: #020202; box-shadow: 0 35px 80px rgba(40,50,55,.14); transform-origin: center bottom; }
+.macbook-demo-logo { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 5rem; opacity: .9; }
+.macbook-demo-logo span { transform: scale(1.15); }
 .project-macbook-screen {
   position: relative;
   z-index: 3;
