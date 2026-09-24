@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MacbookShowcase from "./MacbookShowcase";
+import ProjectMacbook from "./ProjectMacbook";
 
 export default function SystemSection({ t, content }) {
   const [progress, setProgress] = useState(0);
@@ -14,7 +14,7 @@ export default function SystemSection({ t, content }) {
         </div>
 
         <div className="system-workbench">
-          <MacbookShowcase />
+          <ProjectMacbook />
 
           <aside className="skill-panel" aria-label="Skills">
             <div className="skill-panel-head">
