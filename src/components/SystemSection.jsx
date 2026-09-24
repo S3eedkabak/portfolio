@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MacBookScene from "../MacBookScene";
+import MacbookShowcase from "./MacbookShowcase";
 
 export default function SystemSection({ t, content }) {
   const [progress, setProgress] = useState(0);
@@ -14,9 +14,7 @@ export default function SystemSection({ t, content }) {
         </div>
 
         <div className="system-workbench">
-          <div className="system-model-card">
-            <MacBookScene progress={progress} />
-          </div>
+          <MacbookShowcase />
 
           <aside className="skill-panel" aria-label="Skills">
             <div className="skill-panel-head">
