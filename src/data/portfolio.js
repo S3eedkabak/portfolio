@@ -1,7 +1,7 @@
 export const portfolio = {
   name: "Saeid Kabak",
   role: "Software Engineer",
-  location: "Leipzig | Berlin | Remote",
+  location: "Leipzig · Berlin · Remote",
   email: "saeedkabak@gmail.com",
   github: "https://github.com/S3eedkabak",
   linkedin: "https://www.linkedin.com/in/saeid-kabak-5311a3309",
@@ -31,9 +31,17 @@ export const portfolio = {
       stack: ["Java", "React", "RabbitMQ", "RAG", "Docker"],
       url: "https://github.com/DominykasPivo/MARP-Guide-RAG-Chatbot",
     },
+    {
+      number: "03",
+      title: "BACity",
+      category: "MOBILE EVENT DISCOVERY",
+      description: "A work in progress city companion for Bratislava. BACity is built around collecting public events and making them easier to browse, search and find geographically.",
+      stack: ["React Native", "Expo", "TypeScript", "FastAPI", "PostgreSQL", "PostGIS", "Scrapy"],
+      url: "https://github.com/S3eedkabak/BACity",
+    },
   ],
   experience: {
-    period: "JAN — MAR 2026",
+    period: "Jan–Mar 2026",
     title: "Software Engineer · Technical Lead",
     company: "Helmholtz Centre for Environmental Research (UFZ)",
     description: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field-research application.",

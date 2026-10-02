@@ -20,11 +20,6 @@
   min-width: 0;
 }
 
-.site[lang="de"] .system-layout,
-.site[lang="sk"] .system-layout {
-  grid-template-columns: minmax(210px, 0.62fr) minmax(0, 2.38fr);
-}
-
 .site[lang="ar"] .system-copy h2 {
   font-family: var(--sans);
   font-size: clamp(3.2rem, 6vw, 6.2rem);

@@ -12,15 +12,12 @@ export default function ExperienceSection({ t, content }) {
       </div>
 
       <article className="experience-card">
-        <span className="experience-period">{experience.period}</span>
-
         <div>
+          <p className="experience-period">{experience.period}</p>
           <h3>{experience.title}</h3>
           <p className="experience-company">{experience.company}</p>
           <p className="experience-description">{content.experience}</p>
         </div>
-
-        <span className="experience-mark">UFZ</span>
       </article>
     </section>
   );

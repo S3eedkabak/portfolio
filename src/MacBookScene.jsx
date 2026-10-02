@@ -96,6 +96,7 @@ export default function MacBookScene({ progress }) {
   return (
     <Canvas
       className="mac-canvas"
+      frameloop="demand"
       camera={{ fov: 13.5, position: [1, -10, 220] }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}

@@ -1,73 +1,56 @@
-import { useState } from "react";
-import MacBookScene from "../MacBookScene";
+import { Component, Suspense, lazy, useMemo } from "react";
+
+const NewsletterBookshelf = lazy(() =>
+  import("./ui/newsletter-bookshelf").then(({ NewsletterBookshelf }) => ({
+    default: NewsletterBookshelf,
+  })),
+);
+
+class SkillsBoundary extends Component {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed
+      ? <div className="componentry-bookshelf-fallback" role="status">The interactive bookshelf could not be loaded.</div>
+      : this.props.children;
+  }
+}
 
 export default function SystemSection({ t, content }) {
-  const [progress, setProgress] = useState(0);
+  const items = useMemo(
+    () => content.skills.map(([category, technologies], index) => ({
+      id: `skills-${index + 1}`,
+      title: category,
+      subtitle: technologies.split(" · ").join("\n"),
+      color: ["#34463e", "#49584d", "#625b46", "#3a504b", "#59614d"][index],
+      foil: "#e7dfcf",
+    })),
+    [content.skills],
+  );
 
   return (
     <section className="system-section" id="system">
-      <div className="system-layout">
-        <div className="system-copy">
-          <h2>
-            {t.system.titleA} <em>{t.system.titleB}</em>
-          </h2>
-        </div>
-
-        <div className="system-workbench">
-          <div className="system-model-card">
-            <MacBookScene progress={progress} />
-          </div>
-
-          <aside className="skill-panel" aria-label="Skills">
-            <div className="skill-panel-head">
-              <span>Skills</span>
-              <strong>{String(Math.round(progress * 100)).padStart(3, "0")}%</strong>
-            </div>
-
-            {content.skills.map(([label, value], index) => {
-              const active = progress >= 0.08 + index * 0.18;
-
-              return (
-                <article
-                  className={active ? "skill-card is-active" : "skill-card"}
-                  key={label}
-                >
-                  <span className="skill-index">0{index + 1}</span>
-                  <div>
-                    <small>{label}</small>
-                    <strong>{value}</strong>
-                  </div>
-                </article>
-              );
-            })}
-          </aside>
-
-          <div className="assembly-control">
-            <div className="control-copy">
-              <span>{t.system.assembly}</span>
-              <strong>{Math.round(progress * 100)}%</strong>
-            </div>
-
-            <input
-              className="assembly-range"
-              aria-label={t.system.assembly}
-              type="range"
-              min="0"
-              max="1"
-              step="0.001"
-              value={progress}
-              style={{ "--value": progress }}
-              onChange={(event) => setProgress(Number(event.target.value))}
-            />
-
-            <div className="assembly-labels">
-              <span>{t.system.closed}</span>
-              <span>{t.system.open}</span>
-              <span>{t.system.apart}</span>
-            </div>
-          </div>
-        </div>
+      <div className="system-copy">
+        <h2>
+          {t.system.titleA} <em>{t.system.titleB}</em>
+        </h2>
+        <p className="system-description">{t.system.description}</p>
+        <p className="bookshelf-instruction">{t.system.bookshelfHint}</p>
       </div>
+      <SkillsBoundary>
+        <Suspense fallback={<div className="componentry-bookshelf-loading" aria-hidden="true" />}>
+          <NewsletterBookshelf
+            items={items}
+            brand="Saeid Kabak"
+            height="clamp(460px, 68vw, 620px)"
+            className="componentry-skills-bookshelf"
+          />
+        </Suspense>
+      </SkillsBoundary>
     </section>
   );
 }

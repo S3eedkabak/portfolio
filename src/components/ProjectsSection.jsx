@@ -1,4 +1,4 @@
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
 export default function ProjectsSection({ t, content }) {
@@ -19,16 +19,9 @@ export default function ProjectsSection({ t, content }) {
             rel="noreferrer"
             key={project.title}
           >
-            <span className="project-number">{project.number}</span>
-
             <div className="project-content">
-              <div className="project-meta">
-                <span>{content.projects[index][0]}</span>
-                <ExternalLink size={14} />
-              </div>
-
               <h3>{project.title}</h3>
-              <p>{content.projects[index][1]}</p>
+              <p>{content.projects[index]?.[1] ?? project.description}</p>
 
               <div className="project-tags">
                 {project.stack.map((technology) => (
