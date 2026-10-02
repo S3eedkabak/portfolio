@@ -2,15 +2,15 @@ import { Github, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import AsciiEffect from "./ui/AsciiEffect";
 import { Signature } from "./ui/signature.tsx";
-import monumentSource from "../assets/leipzig-monument.svg";
+import asciiSource from "../assets/ascii-field.svg";
 
 export default function Hero({ t, content }) {
   return (
     <section className="hero" id="top">
       <AsciiEffect
         className="hero-ascii"
-        imageSrc={monumentSource}
-        alt="Leipzig Monument to the Battle of the Nations rendered as flowing ASCII characters"
+        imageSrc={asciiSource}
+        alt="Abstract orbital system rendered as flowing ASCII characters"
       />
       <div className="hero-wash" aria-hidden="true" />
 
