@@ -5,6 +5,7 @@ import { MacKeyboard } from "./ui/mac-keyboard";
 
 const EMAIL = "saeedkabak@gmail.com";
 const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
+const MAILTO_URL = `mailto:${EMAIL}`;
 const KEY_CODES = {
   s: "KeyS", a: "KeyA", e: "KeyE", d: "KeyD", k: "KeyK", b: "KeyB",
   "@": ["ShiftLeft", "Digit2"], g: "KeyG", m: "KeyM", i: "KeyI", l: "KeyL", ".": "Period",
@@ -16,6 +17,7 @@ export default function ContactSection({ t }) {
   const [run, setRun] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [started, setStarted] = useState(false);
+  const [mobileMail, setMobileMail] = useState(() => window.matchMedia("(max-width: 800px), (pointer: coarse)").matches);
   const contactRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +26,14 @@ export default function ContactSection({ t }) {
     updateMotionPreference();
     media.addEventListener?.("change", updateMotionPreference);
     return () => media.removeEventListener?.("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 800px), (pointer: coarse)");
+    const updateMailTarget = () => setMobileMail(media.matches);
+    updateMailTarget();
+    media.addEventListener?.("change", updateMailTarget);
+    return () => media.removeEventListener?.("change", updateMailTarget);
   }, []);
 
   useEffect(() => {
@@ -98,10 +108,10 @@ export default function ContactSection({ t }) {
           </div>
           <a
             className="contact-mail"
-            href={GMAIL_COMPOSE_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Compose an email to ${portfolio.email} in Gmail`}
+            href={mobileMail ? MAILTO_URL : GMAIL_COMPOSE_URL}
+            target={mobileMail ? undefined : "_blank"}
+            rel={mobileMail ? undefined : "noreferrer"}
+            aria-label={mobileMail ? `Email ${portfolio.email}` : `Compose an email to ${portfolio.email} in Gmail`}
           >
             <Mail size={19} aria-hidden="true" />
             <span className="typed-email" aria-hidden="true">{EMAIL.slice(0, typedCount)}<span className="typing-caret" /></span>
