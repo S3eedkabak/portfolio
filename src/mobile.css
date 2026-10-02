@@ -1,155 +1,64 @@
 /* Mobile-only responsive polish. Desktop layout remains untouched. */
 @media (max-width: 800px) {
   html, body, #root, .site { width: 100%; max-width: 100%; overflow-x: clip; }
-
   .site-nav { height: 72px; padding-inline: 7vw; }
   .nav-links { top: 72px; padding-inline: 7vw; }
 
-  .hero {
-    min-height: 100svh;
-    padding: 7.2rem 7vw 2.25rem;
-    justify-content: flex-start;
-    gap: 0;
-  }
-  .hero-ascii {
-    inset: 72px -20% 0 10%;
-    width: 112%;
-    height: calc(100% - 72px);
-    opacity: .5;
-    mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
-  }
-  .hero-wash {
-    inset: 72px 0 0;
-    background:
-      linear-gradient(180deg, rgba(17,24,22,.2) 0%, rgba(17,24,22,.05) 42%, rgba(17,24,22,.82) 78%, #111816 100%),
-      linear-gradient(90deg, rgba(17,24,22,.92) 0%, rgba(17,24,22,.48) 58%, rgba(17,24,22,.14) 100%);
-  }
-  .hero-rail {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    gap: .75rem 1.25rem;
-    font-size: clamp(.78rem, 3.5vw, .95rem);
-  }
-  .hero-content {
-    width: 100%;
-    max-width: 100%;
-    margin: auto 0;
-  }
-  .hero-signature-primary {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1.25rem;
-  }
-  .hero-bio {
-    max-width: 34rem;
-    font-size: clamp(.95rem, 4.2vw, 1.08rem);
-    line-height: 1.6;
-  }
-  .hero-footer {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.2rem;
-  }
+  .hero { min-height: 100svh; padding: 7.2rem 7vw 2.25rem; justify-content: flex-start; gap: 0; }
+  .hero-ascii { inset: 72px -20% 0 10%; width: 112%; height: calc(100% - 72px); opacity: .5; mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%); }
+  .hero-wash { inset: 72px 0 0; background: linear-gradient(180deg,rgba(17,24,22,.2) 0%,rgba(17,24,22,.05) 42%,rgba(17,24,22,.82) 78%,#111816 100%),linear-gradient(90deg,rgba(17,24,22,.92) 0%,rgba(17,24,22,.48) 58%,rgba(17,24,22,.14) 100%); }
+  .hero-rail { flex-direction: row; flex-wrap: wrap; justify-content: space-between; width: 100%; gap: .75rem 1.25rem; font-size: clamp(.78rem,3.5vw,.95rem); }
+  .hero-content { width: 100%; max-width: 100%; margin: auto 0; }
+  .hero-signature-primary { width: 100%; max-width: 100%; margin-bottom: 1.25rem; }
+  .hero-bio { max-width: 34rem; font-size: clamp(.95rem,4.2vw,1.08rem); line-height: 1.6; }
+  .hero-footer { width: 100%; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; }
   .hero-links { gap: 1.2rem; }
 
-  .system-section, .projects-section, .experience-section, .about-section, .contact-section {
-    padding-left: 7vw;
-    padding-right: 7vw;
-  }
+  .system-section,.projects-section,.experience-section,.about-section,.contact-section { padding-left: 7vw; padding-right: 7vw; }
   .system-section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
-  .system-copy h2, .section-heading-v5 h2, .about-intro h2 {
-    font-size: clamp(3rem, 14vw, 5rem);
-    line-height: .9;
-  }
+  .system-copy h2,.section-heading-v5 h2,.about-intro h2 { font-size: clamp(3rem,14vw,5rem); line-height: .9; }
   .section-heading-v5 { margin-bottom: 2.5rem; }
 
-  .componentry-bookshelf { overflow: visible; }
-  .componentry-skills-bookshelf,
-  .componentry-skills-bookshelf .bookshelf-stage-inner {
-    min-height: clamp(390px, 100vw, 520px);
-  }
+  /* Keep the bookshelf interaction, but make it a compact mobile object instead of a full-page poster. */
+  .componentry-bookshelf { overflow: hidden; height: min(68svh, 500px) !important; max-height: 500px; margin-top: 1.5rem; border-radius: 2px; }
+  .componentry-skills-bookshelf,.componentry-skills-bookshelf .bookshelf-stage-inner { min-height: 0 !important; height: 100% !important; max-height: 500px; }
+  .bookshelf-stage-inner { touch-action: pan-y; }
+  .bookshelf-tooltip { display: none; }
 
   .project-row { padding: 2.2rem 0; }
   .project-row:hover { padding-left: 0; padding-right: 0; }
-  .project-content h3 { font-size: clamp(2.45rem, 12vw, 4.25rem); }
-
+  .project-content h3 { font-size: clamp(2.45rem,12vw,4.25rem); }
   .about-intro { gap: 2rem; margin-bottom: 3rem; }
 
-  .contact-section {
-    min-height: auto;
-    padding-top: 5.5rem;
-    padding-bottom: 5.5rem;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-  }
-  .contact-copy h2 {
-    font-size: clamp(3.4rem, 15vw, 5.5rem);
-    line-height: .9;
-  }
-  .contact-console {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    padding: .75rem;
-  }
+  .contact-section { min-height: auto; padding-top: 5.5rem; padding-bottom: 5.5rem; grid-template-columns: minmax(0,1fr); gap: 2rem; }
+  .contact-copy h2 { font-size: clamp(3.4rem,15vw,5.5rem); line-height: .9; }
+  .contact-console { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; padding: .7rem; }
   .contact-display { min-width: 0; }
   .contact-mail { width: 100%; max-width: 100%; }
-  .typed-email {
-    display: block;
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: clip;
-    white-space: nowrap;
-  }
+  .typed-email { display: block; flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: clip; white-space: nowrap; }
 
-  /* The old mobile rule forced a 700px keyboard and created the clipped view.
-     Scale the real keyboard to the viewport instead of horizontally scrolling it. */
-  .componentry-keyboard-scroll {
-    width: 100%;
-    overflow: hidden;
-  }
-  .componentry-keyboard-shell {
-    width: 100%;
-    max-width: 100%;
-    padding: clamp(.35rem, 1.6vw, .65rem);
-    border-radius: clamp(.75rem, 3vw, 1.2rem);
-  }
-  .componentry-keyboard-layout {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    gap: clamp(.16rem, .75vw, .34rem);
-    margin-inline: 0;
-  }
-  .componentry-keyboard-row {
-    gap: clamp(.12rem, .65vw, .3rem);
-  }
-  .componentry-keyboard-row:first-child .componentry-key-wrapper { max-height: 30px; }
-  .componentry-keyboard-row:not(:first-child) .componentry-key-wrapper { max-height: 44px; }
-  .componentry-key { min-height: 28px; border-radius: 4px; }
-  .componentry-key-letter { font-size: clamp(.55rem, 2.8vw, .88rem); }
-  .componentry-key-label { font-size: clamp(.42rem, 2.2vw, .7rem); }
-  .componentry-key-wide-label { padding-inline: .12rem; font-size: clamp(.32rem, 1.7vw, .52rem); }
-  .componentry-key-icon { font-size: clamp(.45rem, 2vw, .7rem); }
-  .componentry-key-icon svg,
-  .key-arrow svg,
-  .key-arrow-half svg,
-  .key-modifier-icon { width: clamp(8px, 2.8vw, 13px); height: clamp(8px, 2.8vw, 13px); }
-  .componentry-key-icon-label, .componentry-key-symbol { font-size: clamp(.28rem, 1.4vw, .42rem); }
-  .componentry-icon-key-content, .componentry-number-key-content { padding: .2rem .08rem; }
-  .key-escape, .key-tab, .key-caps, .key-shift-left { padding-left: .22rem; }
-  .key-delete, .key-return, .key-shift-right { padding-right: .22rem; }
-  .key-modifier { padding: .12rem; }
-  .key-modifier-icon { top: .16rem; left: .16rem; }
-  .key-icon-right { right: .16rem; left: auto; }
-
+  /* Fit the complete Mac keyboard, but give it enough vertical room that caps/arrow keys do not collide. */
+  .componentry-keyboard-scroll { width: 100%; overflow: hidden; }
+  .componentry-keyboard-shell { width: 100%; max-width: 100%; padding: clamp(.4rem,1.8vw,.65rem); border-radius: clamp(.75rem,3vw,1.2rem); }
+  .componentry-keyboard-layout { width: 100% !important; min-width: 0 !important; max-width: none !important; gap: clamp(.2rem,.8vw,.34rem); margin-inline: 0; }
+  .componentry-keyboard-row { gap: clamp(.14rem,.65vw,.3rem); min-height: 0; }
+  .componentry-keyboard-row:first-child .componentry-key-wrapper { height: clamp(29px,7.4vw,38px); max-height: none; }
+  .componentry-keyboard-row:not(:first-child) .componentry-key-wrapper { height: clamp(36px,9vw,48px); max-height: none; }
+  .componentry-key { min-height: 0; height: 100%; border-radius: 4px; }
+  .componentry-key-letter { font-size: clamp(.55rem,2.65vw,.86rem); }
+  .componentry-key-label { font-size: clamp(.4rem,2vw,.68rem); }
+  .componentry-key-wide-label { padding-inline: .1rem; font-size: clamp(.3rem,1.55vw,.5rem); }
+  .componentry-key-icon { font-size: clamp(.42rem,1.9vw,.68rem); }
+  .componentry-key-icon svg,.key-arrow svg,.key-arrow-half svg,.key-modifier-icon { width: clamp(8px,2.6vw,13px); height: clamp(8px,2.6vw,13px); }
+  .componentry-key-icon-label,.componentry-key-symbol { font-size: clamp(.26rem,1.3vw,.4rem); }
+  .componentry-icon-key-content,.componentry-number-key-content { padding: .18rem .06rem; }
+  .key-escape,.key-tab,.key-caps,.key-shift-left { padding-left: .18rem; }
+  .key-delete,.key-return,.key-shift-right { padding-right: .18rem; }
+  .key-modifier { padding: .1rem; }
+  .key-modifier-icon { top: .14rem; left: .14rem; }
+  .key-icon-right { right: .14rem; left: auto; }
+  .componentry-arrow-cluster { gap: .12rem; }
+  .componentry-arrow-pair { gap: .12rem; }
   .contact-socials { grid-column: 1; gap: 1.2rem; }
 }
 
@@ -161,14 +70,14 @@
   .hero-signature-primary { width: 100%; max-width: 100%; }
   .hero-footer { align-items: flex-start; }
 
-  .contact-display {
-    min-height: 96px;
-    padding: .85rem .8rem;
-  }
-  .contact-display-topline { margin-bottom: 1rem; }
-  .contact-mail { gap: .45rem; }
-  .typed-email { font-size: clamp(.76rem, 3.75vw, 1rem); letter-spacing: -.045em; }
+  .componentry-bookshelf { height: min(60svh, 430px) !important; max-height: 430px; }
+  .componentry-skills-bookshelf,.componentry-skills-bookshelf .bookshelf-stage-inner { max-height: 430px; }
 
-  .componentry-skills-bookshelf,
-  .componentry-skills-bookshelf .bookshelf-stage-inner { min-height: 390px; }
+  .contact-section { padding-top: 4.75rem; padding-bottom: 4.75rem; }
+  .contact-display { min-height: 96px; padding: .85rem .8rem; }
+  .contact-display-topline { margin-bottom: 1rem; }
+  .contact-mail { gap: .42rem; }
+  .typed-email { font-size: clamp(.76rem,3.7vw,1rem); letter-spacing: -.045em; }
+  .componentry-keyboard-row:first-child .componentry-key-wrapper { height: clamp(27px,7.2vw,32px); }
+  .componentry-keyboard-row:not(:first-child) .componentry-key-wrapper { height: clamp(34px,9.2vw,42px); }
 }
