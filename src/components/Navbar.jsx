@@ -5,7 +5,6 @@ const navItems = [
   ["system", "system"],
   ["work", "work"],
   ["about", "about"],
-  ["game", "game"],
 ];
 
 const languages = ["EN", "DE", "AR", "SK"];
@@ -22,7 +21,6 @@ export default function Navbar({ language, onLanguageChange, t }) {
     system: t.nav.system,
     work: t.nav.work,
     about: t.nav.about,
-    game: t.nav.game,
   };
 
   return (
