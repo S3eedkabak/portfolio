@@ -19,7 +19,6 @@
   .system-copy h2,.section-heading-v5 h2,.about-intro h2 { font-size: clamp(3rem,14vw,5rem); line-height: .9; }
   .section-heading-v5 { margin-bottom: 2.5rem; }
 
-  /* Keep the bookshelf interaction, but make it a compact mobile object instead of a full-page poster. */
   .componentry-bookshelf { overflow: hidden; height: min(68svh, 500px) !important; max-height: 500px; margin-top: 1.5rem; border-radius: 2px; }
   .componentry-skills-bookshelf,.componentry-skills-bookshelf .bookshelf-stage-inner { min-height: 0 !important; height: 100% !important; max-height: 500px; }
   .bookshelf-stage-inner { touch-action: pan-y; }
@@ -37,7 +36,6 @@
   .contact-mail { width: 100%; max-width: 100%; }
   .typed-email { display: block; flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: clip; white-space: nowrap; }
 
-  /* Fit the complete Mac keyboard, but give it enough vertical room that caps/arrow keys do not collide. */
   .componentry-keyboard-scroll { width: 100%; overflow: hidden; }
   .componentry-keyboard-shell { width: 100%; max-width: 100%; padding: clamp(.4rem,1.8vw,.65rem); border-radius: clamp(.75rem,3vw,1.2rem); }
   .componentry-keyboard-layout { width: 100% !important; min-width: 0 !important; max-width: none !important; gap: clamp(.2rem,.8vw,.34rem); margin-inline: 0; }
@@ -60,25 +58,40 @@
   .componentry-arrow-cluster { gap: .12rem; }
   .componentry-arrow-pair { gap: .12rem; }
 
-  /* Escape and Caps Lock need mobile-specific typography. Their desktop labels are too large for the compressed keycaps. */
-  .key-escape .componentry-key-wide-label {
-    width: 100%;
-    padding: 0;
-    font-size: clamp(.44rem, 2.2vw, .66rem);
-    line-height: 1;
-    text-align: center;
+  /* These two labels are children, not MacKey `label` spans. Target the actual DOM. */
+  .key-escape {
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(.46rem, 2vw, .66rem) !important;
+    line-height: 1 !important;
     white-space: nowrap;
+    overflow: hidden;
   }
-  .key-caps .componentry-key-wide-label {
+  .key-caps {
+    padding: 0 .16rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .key-caps-label {
+    display: block;
+    position: static !important;
     width: 100%;
-    padding: 0 .08rem;
-    font-size: clamp(.34rem, 1.65vw, .52rem);
-    line-height: 1.05;
-    text-align: left;
-    white-space: normal;
-    overflow-wrap: normal;
-    word-break: normal;
+    max-width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(.34rem, 1.55vw, .5rem) !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow: hidden;
+    text-overflow: clip;
   }
+  .key-caps-light { display: none; }
   .contact-socials { grid-column: 1; gap: 1.2rem; }
 }
 
