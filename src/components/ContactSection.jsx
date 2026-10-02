@@ -4,6 +4,7 @@ import { portfolio } from "../data/portfolio";
 import { MacKeyboard } from "./ui/mac-keyboard";
 
 const EMAIL = "saeedkabak@gmail.com";
+const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
 const KEY_CODES = {
   s: "KeyS", a: "KeyA", e: "KeyE", d: "KeyD", k: "KeyK", b: "KeyB",
   "@": ["ShiftLeft", "Digit2"], g: "KeyG", m: "KeyM", i: "KeyI", l: "KeyL", ".": "Period",
@@ -95,7 +96,13 @@ export default function ContactSection({ t }) {
               {t.contact.replay}
             </button>
           </div>
-          <a className="contact-mail" href={`mailto:${portfolio.email}`} aria-label={`${t.contact.email}: ${portfolio.email}`}>
+          <a
+            className="contact-mail"
+            href={GMAIL_COMPOSE_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Compose an email to ${portfolio.email} in Gmail`}
+          >
             <Mail size={19} aria-hidden="true" />
             <span className="typed-email" aria-hidden="true">{EMAIL.slice(0, typedCount)}<span className="typing-caret" /></span>
             <span className="email-accessible">{portfolio.email}</span>
