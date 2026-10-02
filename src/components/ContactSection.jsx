@@ -12,6 +12,7 @@ const KEY_CODES = {
 
 export default function ContactSection({ t }) {
   const [typedCount, setTypedCount] = useState(0);
+  const [run, setRun] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [started, setStarted] = useState(false);
   const contactRef = useRef(null);
@@ -50,7 +51,7 @@ export default function ContactSection({ t }) {
       window.clearTimeout(timeoutId);
       window.clearInterval(intervalId);
     };
-  }, [reducedMotion, started]);
+  }, [reducedMotion, started, run]);
 
   useEffect(() => {
     const node = contactRef.current;
@@ -69,8 +70,12 @@ export default function ContactSection({ t }) {
     return () => observer.disconnect();
   }, []);
 
-  const replay = () => setStarted(true);
-  const currentKey = typedCount > 0 && typedCount < EMAIL.length
+  const replay = () => {
+    setStarted(true);
+    setRun((value) => value + 1);
+  };
+
+  const currentKey = typedCount > 0 && typedCount <= EMAIL.length
     ? KEY_CODES[EMAIL[typedCount - 1]]
     : null;
 

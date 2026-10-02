@@ -1322,7 +1322,26 @@ h2 em {
 }
 
 .project-row {
-  grid-template-columns: 4rem minmax(0, 1fr) 2rem;
+  grid-template-columns: minmax(0, 1fr) 2rem;
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.project-content {
+  min-width: 0;
+  width: min(100%, 68rem);
+}
+
+.project-content p {
+  max-width: 58rem;
+  overflow-wrap: anywhere;
+}
+
+.project-stack {
+  width: 100%;
+  min-width: 0;
 }
 
 .project-row:hover {
@@ -2135,5 +2154,83 @@ a {
 
   .componentry-keyboard-layout {
     min-width: 700px !important;
+  }
+}
+
+
+/* Final polish */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: min(68rem, 72vw);
+}
+
+.hero-signature-primary {
+  display: block;
+  width: min(72vw, 66rem);
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 1.4rem;
+  overflow: visible;
+}
+
+.hero-signature {
+  width: auto;
+}
+
+.hero-bio {
+  max-width: 46rem;
+}
+
+.componentry-skills-bookshelf {
+  min-height: 620px;
+}
+
+.componentry-skills-bookshelf .bookshelf-stage-inner {
+  min-height: 620px;
+}
+
+.project-row {
+  overflow: hidden;
+}
+
+.project-content h3,
+.project-content p,
+.project-tags {
+  min-width: 0;
+}
+
+.contact-mail {
+  cursor: pointer;
+}
+
+.contact-mail:hover .typed-email {
+  color: #d0b47a;
+}
+
+@media (max-width: 800px) {
+  .hero-content {
+    max-width: 94vw;
+  }
+
+  .hero-signature-primary {
+    width: min(92vw, 44rem);
+  }
+
+  .componentry-skills-bookshelf,
+  .componentry-skills-bookshelf .bookshelf-stage-inner {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-signature-primary {
+    width: 96vw;
+    max-width: 96vw;
+  }
+
+  .componentry-skills-bookshelf,
+  .componentry-skills-bookshelf .bookshelf-stage-inner {
+    min-height: 440px;
   }
 }

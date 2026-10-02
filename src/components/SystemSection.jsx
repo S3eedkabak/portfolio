@@ -46,7 +46,7 @@ export default function SystemSection({ t, content }) {
           <NewsletterBookshelf
             items={items}
             brand="Saeid Kabak"
-            height="clamp(460px, 68vw, 620px)"
+            height="clamp(620px, 76vw, 820px)"
             className="componentry-skills-bookshelf"
           />
         </Suspense>

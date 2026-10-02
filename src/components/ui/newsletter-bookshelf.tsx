@@ -624,7 +624,7 @@ function Book({
       ? 2.06
       : book.bookHeight / 2 + (hovered ? 0.25 : 0);
     const targetZ = selected ? 1.8 : hovered ? 0.22 : 0;
-    const targetScale = selected ? 0.96 : 1;
+    const targetScale = selected ? 1.32 : 1;
     const targetRotationY = selected
       ? -Math.PI / 2 + orbit.current.yaw + autoYaw
       : 0;

@@ -2,15 +2,15 @@ import { Github, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import AsciiEffect from "./ui/AsciiEffect";
 import { Signature } from "./ui/signature.tsx";
-import asciiSource from "../assets/ascii-field.svg";
+import monumentSource from "../assets/leipzig-monument.svg";
 
 export default function Hero({ t, content }) {
   return (
     <section className="hero" id="top">
       <AsciiEffect
         className="hero-ascii"
-        imageSrc={asciiSource}
-        alt="Abstract orbital line drawing rendered as flowing ASCII characters"
+        imageSrc={monumentSource}
+        alt="Leipzig Monument to the Battle of the Nations rendered as flowing ASCII characters"
       />
       <div className="hero-wash" aria-hidden="true" />
 
@@ -20,20 +20,17 @@ export default function Hero({ t, content }) {
       </div>
 
       <div className="hero-content">
-        <h1>
-          Saeid <em>Kabak</em>
-        </h1>
-        <p className="hero-bio">{content.bio}</p>
         <Signature
           text="Saeid Kabak"
           fontUrl="/fonts/LastoriaBoldRegular.otf"
-          color="#d0b47a"
-          fontSize={38}
-          duration={1.5}
+          color="#f4f0e5"
+          fontSize={132}
+          duration={1.35}
           inView
           once
-          className="hero-signature"
+          className="hero-signature hero-signature-primary"
         />
+        <p className="hero-bio">{content.bio}</p>
       </div>
 
       <div className="hero-footer">

@@ -10,7 +10,7 @@ export const portfolio = {
   skills: [
     { label: "Languages", value: "Java · Python · JavaScript · HTML/CSS · SQL" },
     { label: "Backend", value: "Node.js · Express · REST APIs · RabbitMQ" },
-    { label: "Architecture", value: "Layered systems · Event-driven architecture · Sync/async workflows" },
+    { label: "Architecture", value: "Layered systems · Event driven architecture · Sync/async workflows" },
     { label: "AI & Data", value: "RAG pipelines · Vector search · Embeddings · Algorithms" },
     { label: "DevOps", value: "Docker · Docker Compose · Jenkins · Git · Linux/Unix" },
   ],
@@ -41,9 +41,9 @@ export const portfolio = {
     },
   ],
   experience: {
-    period: "Jan–Mar 2026",
+    period: "Jan to Mar 2026",
     title: "Software Engineer · Technical Lead",
     company: "Helmholtz Centre for Environmental Research (UFZ)",
-    description: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field-research application.",
+    description: "Led the production delivery of GreenPoint, guiding technical decisions from production readiness through delivery for a mobile field research application.",
   },
 };
