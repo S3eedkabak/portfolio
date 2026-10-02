@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const CHARACTER_RAMP = "  .,:;irsXA253hMHGS#9B&@";
-const FLOW_COLORS = ["#829b88", "#bdc6a4", "#d0b47a"];
+const CHARACTER_RAMP = "  .·:+*xX#@";
+const FLOW_COLORS = ["#6f8c7a", "#a8b99b", "#d0b47a"];
 
 export default function AsciiEffect({ imageSrc, alt, className = "" }) {
   const hostRef = useRef(null);
@@ -28,29 +28,13 @@ export default function AsciiEffect({ imageSrc, alt, className = "" }) {
     let pointer = null;
     let disposed = false;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const fontSize = window.innerWidth < 700 ? 8 : 9;
-    const cellWidth = fontSize * 0.64;
-    const cellHeight = fontSize * 1.15;
-
-    const resize = () => {
-      const bounds = host.getBoundingClientRect();
-      if (!bounds.width || !bounds.height) return;
-      width = bounds.width;
-      height = bounds.height;
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.2);
-      canvas.width = Math.round(width * pixelRatio);
-      canvas.height = Math.round(height * pixelRatio);
-      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      context.font = `500 ${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
-      context.textBaseline = "top";
-      context.fillStyle = "#111816";
-      context.fillRect(0, 0, width, height);
-      render(0, true);
-    };
+    const fontSize = window.innerWidth < 700 ? 9 : 11;
+    const cellWidth = fontSize * 0.66;
+    const cellHeight = fontSize * 1.2;
 
     const render = (time, force = false) => {
       if (disposed || !width || !height || !sampleContext || !image.complete || !image.naturalWidth) return;
-      if (!force && time - lastFrame < 48) {
+      if (!force && time - lastFrame < 55) {
         if (!reducedMotion.matches && visible) frameId = window.requestAnimationFrame(render);
         return;
       }
@@ -71,46 +55,57 @@ export default function AsciiEffect({ imageSrc, alt, className = "" }) {
       let offsetX = 0;
       let offsetY = 0;
       if (imageRatio > sampleRatio) {
-        drawWidth = rows * imageRatio;
-        offsetX = (columns - drawWidth) / 2;
-      } else {
         drawHeight = columns / imageRatio;
         offsetY = (rows - drawHeight) / 2;
+      } else {
+        drawWidth = rows * imageRatio;
+        offsetX = (columns - drawWidth) / 2;
       }
       sampleContext.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
       const pixels = sampleContext.getImageData(0, 0, columns, rows).data;
-      const flowTime = reducedMotion.matches ? 0 : time * 0.00022;
+      const flowTime = reducedMotion.matches ? 0 : time * 0.00016;
       const ripple = pointer && !reducedMotion.matches ? pointer : null;
 
       context.fillStyle = "#111816";
       context.fillRect(0, 0, width, height);
-      const imageScale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
-      const visualWidth = image.naturalWidth * imageScale;
-      const visualHeight = image.naturalHeight * imageScale;
-      const visualLeft = (width - visualWidth) / 2;
-      const visualTop = (height - visualHeight) / 2;
       for (let row = 0; row < rows; row += 1) {
         const y = row * cellHeight;
         for (let column = 0; column < columns; column += 1) {
-          const wave = Math.sin(column * 0.09 + row * 0.06 + flowTime) * 1.25;
+          const wave = Math.sin(column * 0.07 + row * 0.045 + flowTime) * 0.75;
           const dx = ripple ? (column - ripple.x) * cellWidth : 0;
           const dy = ripple ? (row - ripple.y) * cellHeight : 0;
           const radius = ripple ? Math.sqrt(dx * dx + dy * dy) : 10000;
-          const influence = ripple ? Math.max(0, 1 - radius / 180) : 0;
-          const displacedX = Math.max(0, Math.min(columns - 1, Math.round(column + wave + influence * 2.8)));
-          const displacedY = Math.max(0, Math.min(rows - 1, Math.round(row + Math.sin(column * 0.045 + flowTime) * 0.7)));
+          const influence = ripple ? Math.max(0, 1 - radius / 210) : 0;
+          const displacedX = Math.max(0, Math.min(columns - 1, Math.round(column + wave + influence * 1.8)));
+          const displacedY = Math.max(0, Math.min(rows - 1, Math.round(row + Math.sin(column * 0.04 + flowTime) * 0.45)));
           const sampleIndex = (displacedY * columns + displacedX) * 4;
           const luminance = (pixels[sampleIndex] * 0.2126 + pixels[sampleIndex + 1] * 0.7152 + pixels[sampleIndex + 2] * 0.0722) / 255;
-          if (luminance < 0.12) continue;
+          if (luminance < 0.2) continue;
           const characterIndex = Math.min(CHARACTER_RAMP.length - 1, Math.floor(luminance * (CHARACTER_RAMP.length - 1)));
           const colorIndex = Math.min(FLOW_COLORS.length - 1, Math.floor(luminance * FLOW_COLORS.length));
           context.fillStyle = FLOW_COLORS[colorIndex];
-          context.globalAlpha = 0.42 + luminance * 0.55;
-          context.fillText(CHARACTER_RAMP[characterIndex], visualLeft + column * cellWidth, visualTop + y);
+          context.globalAlpha = 0.3 + luminance * 0.58;
+          context.fillText(CHARACTER_RAMP[characterIndex], column * cellWidth, y);
         }
       }
       context.globalAlpha = 1;
       if (!reducedMotion.matches && visible) frameId = window.requestAnimationFrame(render);
+    };
+
+    const resize = () => {
+      const bounds = host.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      width = bounds.width;
+      height = bounds.height;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.2);
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      context.font = `500 ${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+      context.textBaseline = "top";
+      context.fillStyle = "#111816";
+      context.fillRect(0, 0, width, height);
+      render(0, true);
     };
 
     image.onload = () => {
