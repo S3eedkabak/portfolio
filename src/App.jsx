@@ -5,7 +5,6 @@ import SystemSection from "./components/SystemSection";
 import ProjectsSection from "./components/ProjectsSection";
 import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
-import GameSection from "./components/GameSection";
 import ContactSection from "./components/ContactSection";
 import { getTranslation, getContent } from "./data/i18n";
 import { getSyrianArabic } from "./data/syrianArabic";
@@ -37,7 +36,6 @@ export default function App() {
         <ProjectsSection t={pageTranslation} content={localized.content} />
         <AboutSection t={pageTranslation} content={localized.content} />
         <ExperienceSection t={pageTranslation} content={localized.content} />
-        <GameSection t={pageTranslation} />
         <ContactSection t={pageTranslation} />
       </main>
       <footer className="site-footer">
