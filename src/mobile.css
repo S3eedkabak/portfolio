@@ -59,6 +59,26 @@
   .key-icon-right { right: .14rem; left: auto; }
   .componentry-arrow-cluster { gap: .12rem; }
   .componentry-arrow-pair { gap: .12rem; }
+
+  /* Escape and Caps Lock need mobile-specific typography. Their desktop labels are too large for the compressed keycaps. */
+  .key-escape .componentry-key-wide-label {
+    width: 100%;
+    padding: 0;
+    font-size: clamp(.44rem, 2.2vw, .66rem);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .key-caps .componentry-key-wide-label {
+    width: 100%;
+    padding: 0 .08rem;
+    font-size: clamp(.34rem, 1.65vw, .52rem);
+    line-height: 1.05;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
   .contact-socials { grid-column: 1; gap: 1.2rem; }
 }
 
