@@ -2,7 +2,7 @@ import { Github, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import AsciiEffect from "./ui/AsciiEffect";
 import { Signature } from "./ui/signature.tsx";
-import monumentSource from "../assets/leipzig-monument.svg";
+import monumentSource from "../assets/spider.svg";
 
 export default function Hero({ t, content }) {
   return (
