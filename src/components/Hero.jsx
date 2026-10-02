@@ -2,16 +2,15 @@ import { Github, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import AsciiEffect from "./ui/AsciiEffect";
 import { Signature } from "./ui/signature.tsx";
-
-const COMPONENTRY_PORTRAIT = "https://componentry.dev/images/portrait.jpg";
+import monumentSource from "../assets/leipzig-monument.svg";
 
 export default function Hero({ t, content }) {
   return (
     <section className="hero" id="top">
       <AsciiEffect
         className="hero-ascii"
-        imageSrc={COMPONENTRY_PORTRAIT}
-        alt="Portrait rendered as flowing ASCII characters"
+        imageSrc={monumentSource}
+        alt="Leipzig Monument rendered as flowing ASCII characters"
       />
       <div className="hero-wash" aria-hidden="true" />
 
