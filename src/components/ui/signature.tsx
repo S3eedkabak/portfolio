@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { parse as parseFont } from "opentype.js";
 import { cn } from "../../lib/utils";
 
@@ -37,15 +37,18 @@ export function Signature({
   once = true,
   fontUrl,
 }: SignatureProps) {
+  const reduced = useReducedMotion();
+  const [failed, setFailed] = useState(false);
   const [paths, setPaths] = useState<string[]>([]);
+  const [verticalBounds, setVerticalBounds] = useState({ y: 0, height: fontSize * 3 });
   const [width, setWidth] = useState<number>(300);
-  const height = fontSize * 3; // Give plenty of vertical space
   const horizontalPadding = fontSize * 0.1;
   const topMargin = fontSize * 1.5; // Shift down
   const baseline = topMargin;
   const maskId = `signature-reveal-${useId().replace(/:/g, "")}`;
 
   useEffect(() => {
+    let cancelled = false;
     async function load() {
       try {
         let font;
@@ -74,19 +77,30 @@ export function Signature({
 
         let x = horizontalPadding;
         const newPaths: string[] = [];
+        let minY = Infinity, maxY = -Infinity;
 
         for (const char of text) {
           const glyph = font.charToGlyph(char);
           const path = glyph.getPath(x, baseline, fontSize);
           newPaths.push(path.toPathData(3));
+          if (path.commands.length) {
+            const bounds = path.getBoundingBox();
+            minY = Math.min(minY, bounds.y1);
+            maxY = Math.max(maxY, bounds.y2);
+          }
 
           const advanceWidth = glyph.advanceWidth ?? font.unitsPerEm;
           x += advanceWidth * (fontSize / font.unitsPerEm);
         }
 
+        if (cancelled) return;
+        setFailed(false);
+        setVerticalBounds({ y: minY - 12, height: maxY - minY + 24 });
         setPaths(newPaths);
         setWidth(x + horizontalPadding);
       } catch (error) {
+        if (cancelled) return;
+        setFailed(true);
         console.error("Signature component font load error:", error);
         setPaths([]);
         setWidth(text.length * fontSize * 0.6);
@@ -94,6 +108,7 @@ export function Signature({
     }
 
     load();
+    return () => { cancelled = true; };
   }, [text, fontSize, baseline, horizontalPadding, fontUrl]);
 
   const variants = {
@@ -105,16 +120,17 @@ export function Signature({
     <motion.svg
       key={paths.length}
       width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      height={verticalBounds.height}
+      viewBox={`0 ${verticalBounds.y} ${width} ${verticalBounds.height}`}
       fill="none"
       className={cn("overflow-visible", className)}
       aria-hidden="true"
-      initial="hidden"
+      initial={reduced ? "visible" : "hidden"}
       whileInView={inView ? "visible" : undefined}
       animate={inView ? undefined : "visible"}
       viewport={{ once }}
     >
+      {failed && <text x={horizontalPadding} y={baseline} fill={color} fontSize={fontSize} fontFamily="cursive">{text}</text>}
       <defs>
         <mask id={maskId} maskUnits="userSpaceOnUse">
           {paths.map((d, i) => (
@@ -127,12 +143,12 @@ export function Signature({
               variants={variants}
               transition={{
                 pathLength: {
-                  delay: delay + i * 0.2,
-                  duration,
+                  delay: reduced ? 0 : delay + i * 0.07,
+                  duration: reduced ? 0 : duration,
                   ease: "easeInOut",
                 },
                 opacity: {
-                  delay: delay + i * 0.2 + 0.01,
+                  delay: reduced ? 0 : delay + i * 0.07 + 0.01,
                   duration: 0.01,
                 },
               }}
@@ -154,12 +170,12 @@ export function Signature({
           variants={variants}
           transition={{
             pathLength: {
-              delay: delay + i * 0.2,
-              duration,
+              delay: reduced ? 0 : delay + i * 0.07,
+              duration: reduced ? 0 : duration,
               ease: "easeInOut",
             },
             opacity: {
-              delay: delay + i * 0.2 + 0.01,
+              delay: reduced ? 0 : delay + i * 0.07 + 0.01,
               duration: 0.01,
             },
           }}

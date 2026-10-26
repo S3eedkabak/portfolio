@@ -1,3 +1,4 @@
+import { InView } from "./motion/primitives";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio";
@@ -92,11 +93,11 @@ export default function ContactSection({ t }) {
 
   return (
     <section className="contact-section" id="contact" ref={contactRef}>
-      <div className="contact-copy">
+      <InView className="contact-copy" variant="settle">
         <h2>
           {t.contact.titleA} <em>{t.contact.titleB}</em>
         </h2>
-      </div>
+      </InView>
 
       <div className="contact-console">
         <div className="contact-display">

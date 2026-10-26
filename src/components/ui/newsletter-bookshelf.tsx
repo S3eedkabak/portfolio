@@ -44,7 +44,7 @@ type BookLayout = NewsletterBookshelfItem & {
   foil: string;
 };
 
-const PALETTE = ["#34463e", "#49584d", "#625b46", "#3a504b", "#59614d"];
+const PALETTE = ["#a91f32", "#173d83", "#263a60", "#c02b38", "#1a51a8"];
 
 export const defaultNewsletterBooks: NewsletterBookshelfItem[] = [];
 
@@ -91,7 +91,7 @@ function deriveLayout(items: NewsletterBookshelfItem[]) {
     const width = 0.34 + random() * 0.3;
     const bookHeight = 3.65 + (random() * 2 - 1) * 0.22;
     const color = item.color ?? fallbackColor;
-    const foil = item.foil ?? (luminance(color) < 0.5 ? "#e7dfcf" : "#26332e");
+    const foil = item.foil ?? (luminance(color) < 0.5 ? "#f5f7fc" : "#142c63");
     if (random() < 0.14) cursor += 0.2;
     const x = cursor + width / 2;
     cursor += width + 0.065;
@@ -375,7 +375,7 @@ function coverTexture(book: BookLayout, brand: string, face: "cover" | "spine") 
   context.fillStyle = book.foil;
   context.strokeStyle = book.foil;
   context.textBaseline = "top";
-  context.shadowColor = "rgba(0, 0, .3)";
+  context.shadowColor = "rgba(0, 0, 0, .3)";
   context.shadowBlur = 1.4;
   context.shadowOffsetX = 0.8;
   context.shadowOffsetY = 1.1;
@@ -577,9 +577,10 @@ function Book({
   useEffect(() => {
     return () => {
       Object.values(textures).forEach((texture) => texture?.dispose());
-      geometry.dispose();
     };
-  }, [geometry, textures]);
+  }, [textures]);
+
+  useEffect(() => () => geometry.dispose(), [geometry]);
 
   useEffect(() => {
     const node = group.current;
@@ -810,10 +811,10 @@ function Book({
   );
 }
 
-function CameraRig({ target }: { target: React.MutableRefObject<number> }) {
+function CameraRig({ target, reducedMotion }: { target: React.MutableRefObject<number>; reducedMotion: boolean }) {
   const { camera } = useThree();
   useFrame((_, delta) => {
-    camera.position.x = damp(camera.position.x, target.current, 8, delta);
+    camera.position.x = reducedMotion ? target.current : damp(camera.position.x, target.current, 8, delta);
     camera.lookAt(camera.position.x, 1.88, 0);
   });
   return null;
@@ -842,7 +843,7 @@ function Scene({
 }) {
   return (
     <>
-      <CameraRig target={cameraX} />
+      <CameraRig target={cameraX} reducedMotion={reducedMotion} />
       <ambientLight intensity={1.5} />
       <hemisphereLight args={["#ffffff", "#d7dce8", 1.2]} />
       <directionalLight position={[5, 8, 7]} intensity={2.2} />
@@ -894,6 +895,8 @@ export function NewsletterBookshelf({
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [pageVisible, setPageVisible] = useState(!document.hidden);
   const [stageWidth, setStageWidth] = useState(1000);
   const stageRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -910,16 +913,19 @@ export function NewsletterBookshelf({
   const pendingSelection = useRef<number | null>(null);
   const suppressClick = useRef(false);
 
+  const firstX = books[0]?.x ?? 0;
+  const lastX = books.at(-1)?.x ?? 0;
+  const bookCount = books.length;
   const getBounds = useCallback(() => {
-    if (!books.length) return { min: 0, max: 0, visibleSpan: 0 };
-    const last = books.at(-1)?.x ?? 0;
+    if (!bookCount) return { min: 0, max: 0, visibleSpan: 0 };
+    const last = lastX;
     const aspect = stageWidth / Math.max(420, typeof height === "number" ? height : 620);
     const visibleSpan = 2 * 10 * Math.tan((35 * Math.PI) / 360) * aspect;
     const inset = visibleSpan * 0.31;
-    const min = Math.min(last / 2, (books[0]?.x ?? 0) + inset);
+    const min = Math.min(last / 2, firstX + inset);
     const max = Math.max(last / 2, last - inset);
     return max <= min ? { min: last / 2, max: last / 2, visibleSpan } : { min, max, visibleSpan };
-  }, [books, height, stageWidth]);
+  }, [bookCount, firstX, lastX, height, stageWidth]);
 
   const moveCamera = useCallback(
     (next: number) => {
@@ -937,21 +943,29 @@ export function NewsletterBookshelf({
     motion.addEventListener?.("change", update);
     const stage = stageRef.current;
     if (!stage) return () => motion.removeEventListener?.("change", update);
+    const visibility = new IntersectionObserver(([entry]) => setVisible(Boolean(entry?.isIntersecting)), { rootMargin: "150px" });
+    visibility.observe(stage);
+    const pageVisibility = () => setPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", pageVisibility);
     const resize = new ResizeObserver(([entry]) => {
       if (entry) setStageWidth(entry.contentRect.width);
     });
     resize.observe(stage);
     return () => {
       resize.disconnect();
+      visibility.disconnect();
+      document.removeEventListener("visibilitychange", pageVisibility);
       motion.removeEventListener?.("change", update);
     };
   }, []);
 
+  // Palette and language updates keep the current camera and selected book.
+  // Only geometry/viewport bounds should recenter the installation.
   useEffect(() => {
     const bounds = getBounds();
     cameraX.current = bounds.min;
     if (books.length) setCurrentIndex(nearestBook(books, bounds.min));
-  }, [books, getBounds]);
+  }, [getBounds]);
 
   useEffect(
     () => () => {
@@ -1141,7 +1155,7 @@ export function NewsletterBookshelf({
             event.preventDefault();
             if (selectedIndex !== null) switchFocused(-1);
             else moveCamera(cameraX.current - bounds.visibleSpan * 0.23);
-          } else if (event.key === "Enter" || event.key === "") {
+          } else if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             if (selectedIndex === null) selectBook(currentIndex);
             else close();
@@ -1150,7 +1164,8 @@ export function NewsletterBookshelf({
       >
         <Canvas
           camera={{ fov: 35, near: 0.1, far: 60, position: [cameraX.current, 2.65, 10] }}
-          dpr={[1, 2]}
+          frameloop={visible && pageVisible ? "always" : "never"}
+          dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           className="componentry-bookshelf-canvas"
           onPointerMissed={() => {
