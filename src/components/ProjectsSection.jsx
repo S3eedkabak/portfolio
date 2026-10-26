@@ -1,24 +1,24 @@
+import greenpointArtwork from "../assets/project-greenpoint.svg";
+import marpArtwork from "../assets/project-marp.svg";
+import bacityArtwork from "../assets/project-bacity.svg";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 import { portfolio } from "../data/portfolio";
 import { InView } from "./motion/primitives";
 import { springs } from "../lib/motion";
 
+const projectArtwork = [greenpointArtwork, marpArtwork, bacityArtwork];
+
 function ProjectArtwork({ index }) {
-  return <svg className={`project-artwork artwork-${index}`} viewBox="0 0 600 440" fill="none" aria-hidden="true">
-    {index === 0 ? <>
-      {[0,1,2,3,4].map((row) => <g key={row} transform={`translate(${120 + row * 55} ${80 + row % 2 * 40})`}><path d="M0 210V48M-40 105L0 35L40 105M-55 150L0 70L55 150M-65 195L0 110L65 195" /><ellipse cy="220" rx="55" ry="15" /></g>)}
-      <path d="M90 340L300 390L520 315M90 365L300 415L520 340" />
-    </> : index === 1 ? <>
-      <path d="M90 220L240 100L420 145L510 310L320 350L90 220L420 145M240 100L320 350M90 220L510 310" />
-      {[[90,220],[240,100],[420,145],[510,310],[320,350]].map(([x,y],i) => <g key={i} transform={`translate(${x} ${y})`}><circle r="36" /><circle r="24" /><path d="M-8-8H8V8H-8Z" /></g>)}
-      <ellipse cx="300" cy="220" rx="240" ry="170" strokeDasharray="3 12" />
-    </> : <>
-      <path d="M75 290L275 390L535 250L340 150L75 290ZM135 260L335 360M200 225L400 325M270 190L470 290M135 320L395 180M200 355L460 215" />
-      {[[200,240,75],[325,200,110],[400,280,60],[280,310,45]].map(([x,y,h],i) => <g key={i}><path d={`M${x} ${y}v-${h}l30 -16l30 16v${h}l-30 16Z M${x} ${y-h}l30 16l30 -16 M${x+30} ${y-h+16}v${h}`} /></g>)}
-      <path d="M325 70C300 70 290 100 325 130C360 100 350 70 325 70Z" /><circle cx="325" cy="92" r="6" />
-    </>}
-  </svg>;
+  return <img
+    className={`project-artwork-image artwork-${index}`}
+    src={projectArtwork[index]}
+    alt=""
+    aria-hidden="true"
+    loading="lazy"
+    decoding="async"
+    draggable="false"
+  />;
 }
 
 function Project({ project, description, index }) {

@@ -288,3 +288,29 @@ h2 em { color: var(--accent); }
   .hero { padding-top: calc(115px + env(safe-area-inset-top)); padding-bottom: calc(30px + env(safe-area-inset-bottom)); }
   .contact-section { padding-bottom: calc(65px + env(safe-area-inset-bottom)); }
 }
+
+/* Supplied project SVGs: keep the existing scenes and pointer-motion behavior. */
+.project-artwork-image {
+  display: block;
+  width: min(100%, 440px);
+  height: 350px;
+  margin-inline: auto;
+  object-fit: contain;
+  opacity: .85;
+  transition: opacity 400ms, filter 400ms;
+}
+.project-row:hover .project-artwork-image,
+.project-row:focus-visible .project-artwork-image {
+  opacity: 1;
+  filter: drop-shadow(0 6px 14px rgba(var(--light-rgb), .18));
+}
+[data-theme="symbiote"] .project-artwork-image {
+  filter: invert(1);
+}
+[data-theme="symbiote"] .project-row:hover .project-artwork-image,
+[data-theme="symbiote"] .project-row:focus-visible .project-artwork-image {
+  filter: invert(1) drop-shadow(0 6px 14px rgba(255,255,255,.16));
+}
+@media (max-width: 700px) {
+  .project-artwork-image { width: min(100%, 330px); height: 230px; }
+}
