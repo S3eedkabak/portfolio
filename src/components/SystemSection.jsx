@@ -1,3 +1,5 @@
+import { useTheme } from "../theme/ThemeProvider";
+import { InView } from "./motion/primitives";
 import { Component, Suspense, lazy, useMemo } from "react";
 
 const NewsletterBookshelf = lazy(() =>
@@ -21,27 +23,28 @@ class SkillsBoundary extends Component {
 }
 
 export default function SystemSection({ t, content }) {
+  const { palette } = useTheme();
   const items = useMemo(
     () => content.skills.map(([category, technologies], index) => ({
       id: `skills-${index + 1}`,
       title: category,
       subtitle: technologies.split(" · ").join("\n"),
-      color: ["#34463e", "#49584d", "#625b46", "#3a504b", "#59614d"][index],
-      foil: "#e7dfcf",
+      color: palette.books[index],
+      foil: palette.foil,
     })),
-    [content.skills],
+    [content.skills, palette],
   );
 
   return (
     <section className="system-section" id="system">
-      <div className="system-copy">
+      <InView className="system-copy">
         <h2>
           {t.system.titleA} <em>{t.system.titleB}</em>
         </h2>
         <p className="system-description">{t.system.description}</p>
         <p className="bookshelf-instruction">{t.system.bookshelfHint}</p>
-      </div>
-      <SkillsBoundary>
+      </InView>
+      <div className="shelf-installation"><div className="shelf-halo" aria-hidden="true" /><SkillsBoundary>
         <Suspense fallback={<div className="componentry-bookshelf-loading" aria-hidden="true" />}>
           <NewsletterBookshelf
             items={items}
@@ -50,7 +53,7 @@ export default function SystemSection({ t, content }) {
             className="componentry-skills-bookshelf"
           />
         </Suspense>
-      </SkillsBoundary>
+      </SkillsBoundary></div>
     </section>
   );
 }

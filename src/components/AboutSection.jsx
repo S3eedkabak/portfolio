@@ -1,17 +1,18 @@
+import { InView } from "./motion/primitives";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
 export default function AboutSection({ t, content }) {
   return (
     <section className="about-section" id="about">
-      <div className="about-intro">
+      <InView className="about-intro" variant="slide">
         <h2>
           {t.about.titleA} <em>{t.about.titleB}</em>
         </h2>
-        <p className="about-lead">{t.about.lead}</p>
-      </div>
+      </InView>
 
-      <div className="about-copy">
+      <InView className="about-copy" delay={0.1}>
+        <p className="about-lead">{t.about.lead}</p>
         <p>{content.education}</p>
         <p>{t.about.body}</p>
 
@@ -29,7 +30,7 @@ export default function AboutSection({ t, content }) {
             {t.contact.email}
           </a>
         </div>
-      </div>
+      </InView>
     </section>
   );
 }

@@ -1,12 +1,12 @@
 /* Mobile-only responsive polish. Desktop layout remains untouched. */
 @media (max-width: 800px) {
-  html, body, #root, .site { width: 100%; max-width: 100%; overflow-x: clip; }
+  html, body, #root, .site { width: 100%; max-width: 100%;  }
   .site-nav { height: 72px; padding-inline: 7vw; }
   .nav-links { top: 72px; padding-inline: 7vw; }
 
   .hero { min-height: 100svh; padding: 7.2rem 7vw 2.25rem; justify-content: flex-start; gap: 0; }
   .hero-ascii { inset: 72px -20% 0 10%; width: 112%; height: calc(100% - 72px); opacity: .5; mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%); }
-  .hero-wash { inset: 72px 0 0; background: linear-gradient(180deg,rgba(17,24,22,.2) 0%,rgba(17,24,22,.05) 42%,rgba(17,24,22,.82) 78%,#111816 100%),linear-gradient(90deg,rgba(17,24,22,.92) 0%,rgba(17,24,22,.48) 58%,rgba(17,24,22,.14) 100%); }
+  .hero-wash { inset: 72px 0 0; background: linear-gradient(180deg,rgba(var(--hero-rgb),.2) 0%,rgba(var(--hero-rgb),.05) 42%,rgba(var(--hero-rgb),.82) 78%,var(--color-hero-background) 100%),linear-gradient(90deg,rgba(var(--hero-rgb),.92) 0%,rgba(var(--hero-rgb),.48) 58%,rgba(var(--hero-rgb),.14) 100%); }
   .hero-rail { flex-direction: row; flex-wrap: wrap; justify-content: space-between; width: 100%; gap: .75rem 1.25rem; font-size: clamp(.78rem,3.5vw,.95rem); }
   .hero-content { width: 100%; max-width: 100%; margin: auto 0; }
   .hero-signature-primary { width: 100%; max-width: 100%; margin-bottom: 1.25rem; }
